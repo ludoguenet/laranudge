@@ -10,8 +10,8 @@
             <div class="px-4 sm:px-6 lg:px-8">
                 <div class="sm:flex sm:items-center">
                     <div class="sm:flex-auto">
-                        <h1 class="text-base font-semibold leading-6 text-gray-900">nudges</h1>
-                        <p class="mt-2 text-sm text-gray-700">A list of all your nudges and their information.</p>
+                        <h1 class="text-base font-semibold leading-6 text-gray-900">Dashboard</h1>
+                        <p class="mt-2 text-sm text-gray-700">A list of all your nudges and their status.</p>
                     </div>
                 </div>
                 <div class="mt-8 flow-root">
@@ -20,7 +20,7 @@
                             <table class="min-w-full divide-y divide-gray-300">
                                 <thead>
                                     <tr>
-                                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900">Content</th>
+                                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900">Tip content</th>
                                         <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Status</th>
                                         <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
                                         <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
