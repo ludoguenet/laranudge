@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Tip\StoreController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,15 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', HomePageController::class)->name('homepage');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('/dashboard', 'dashboard')->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+    Route::prefix('tips')
+        ->as('tips.')
+        ->group(function () {
+            Route::view('/create', 'tips.create')->name('create');
+            Route::post('/', StoreController::class)->name('store');
+        });
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
