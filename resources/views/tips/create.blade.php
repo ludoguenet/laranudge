@@ -48,7 +48,7 @@
                                     <!-- Selected: "bg-gray-100 text-gray-900 hover:bg-gray-200", Not Selected: "bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-900" -->
                                     <button @click="currentTab = 1" id="tabs-1-tab-1" class="bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-900 rounded-md border border-transparent px-3 py-1.5 text-sm font-medium" aria-controls="tabs-1-panel-1" role="tab" type="button">Write</button>
                                     <!-- Selected: "bg-gray-100 text-gray-900 hover:bg-gray-200", Not Selected: "bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-900" -->
-                                    <button @click="handleClick; currentTab = 2" id="tabs-1-tab-2" class="bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-900 ml-2 rounded-md border border-transparent px-3 py-1.5 text-sm font-medium" aria-controls="tabs-1-panel-2" role="tab" type="button">Preview</button>
+                                    <button @click="handleClick; currentTab = 2" id="tabs-1-tab-2" :class="currentTab === 2 ? 'bg-gray-100 text-gray-900 hover:bg-gray-200' : 'bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-900'" class="ml-2 rounded-md border border-transparent px-3 py-1.5 text-sm font-medium" aria-controls="tabs-1-panel-2" role="tab" type="button">Preview</button>
 
                                     <!-- These buttons are here simply as examples and don't actually do anything. -->
                                     <div class="ml-auto flex items-center space-x-5">
@@ -87,8 +87,8 @@
                                         </div>
                                     </div>
                                     <div x-show="currentTab === 2" id="tabs-1-panel-2" class="-m-0.5 rounded-lg p-0.5" aria-labelledby="tabs-1-tab-2" role="tabpanel" tabindex="0">
-                                        <div class="border-b">
-                                            <div class="mx-px mt-px px-3 pb-12 pt-2 text-sm leading-5 text-gray-800">
+                                        <div>
+                                            <div class="mx-px mt-px px-3 pt-2 text-sm leading-5 text-gray-800">
                                                 <pre><code class="language-php"></code></pre>
                                             </div>
                                         </div>
