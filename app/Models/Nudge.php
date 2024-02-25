@@ -17,11 +17,17 @@ class Nudge extends Model
         'user_id',
     ];
 
+    /**
+     * @return BelongsTo<User, Nudge>
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * @param Builder<Nudge> $query
+     */
     public function scopeValidated(
         Builder $query,
     ): void {
