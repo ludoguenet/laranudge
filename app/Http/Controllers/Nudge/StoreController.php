@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Tip;
+namespace App\Http\Controllers\Nudge;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -17,11 +17,11 @@ class StoreController extends Controller
             'code' => 'required|string',
         ]);
 
-        auth()->user()->tips()->create([
+        auth()->user()->nudges()->create([
             'content' => $request->content,
             'code' => $request->code,
         ]);
 
-        return redirect()->back()->with('status', 'tip-created');
+        return redirect()->back()->with('status', 'nudge-created');
     }
 }

@@ -44,8 +44,8 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function tips(): HasMany
+    public function nudges(): HasMany
     {
-        return $this->hasMany(Tip::class);
+        return $this->hasMany(Nudge::class);
     }
 }

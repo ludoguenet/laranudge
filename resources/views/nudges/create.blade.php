@@ -4,7 +4,7 @@
     @endpush
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Submit a new tip') }}
+            {{ __('Submit a new nudge') }}
         </h2>
     </x-slot>
 
@@ -15,16 +15,16 @@
                     <section>
                         <header>
                             <h2 class="text-lg font-medium text-gray-900">
-                                {{ __('Tip form') }}
+                                {{ __('nudge form') }}
                             </h2>
 
                             <p class="mt-1 text-sm text-gray-600">
-                                {{ __("The tip will be available publicly after validation.") }}
+                                {{ __("The nudge will be available publicly after validation.") }}
                             </p>
                         </header>
 
 
-                        <form method="post" action="{{ route('tips.store') }}" class="mt-6 space-y-6">
+                        <form method="post" action="{{ route('nudges.store') }}" class="mt-6 space-y-6">
                             @csrf
 
                             <div>
@@ -43,12 +43,12 @@
                                 <x-input-error class="mt-2" :messages="$errors->get('code')" />
                             </div> --}}
 
-                            <div x-data="{ currentTab: 1 }">
+                            <div x-data="tabs">
                                 <div class="flex items-center" aria-orientation="horizontal" role="tablist">
                                     <!-- Selected: "bg-gray-100 text-gray-900 hover:bg-gray-200", Not Selected: "bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-900" -->
-                                    <button @click="currentTab = 1" id="tabs-1-tab-1" class="bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-900 rounded-md border border-transparent px-3 py-1.5 text-sm font-medium" aria-controls="tabs-1-panel-1" role="tab" type="button">Write</button>
+                                    <button @click="showFirstTab" id="tabs-1-tab-1" :class="currentTab === 1 ? 'bg-gray-100 text-gray-900 hover:bg-gray-200' : 'bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-900'" class="rounded-md border border-transparent px-3 py-1.5 text-sm font-medium" aria-controls="tabs-1-panel-1" role="tab" type="button">Write</button>
                                     <!-- Selected: "bg-gray-100 text-gray-900 hover:bg-gray-200", Not Selected: "bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-900" -->
-                                    <button @click="handleClick; currentTab = 2" id="tabs-1-tab-2" :class="currentTab === 2 ? 'bg-gray-100 text-gray-900 hover:bg-gray-200' : 'bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-900'" class="ml-2 rounded-md border border-transparent px-3 py-1.5 text-sm font-medium" aria-controls="tabs-1-panel-2" role="tab" type="button">Preview</button>
+                                    <button @click="showSecondTab" id="tabs-1-tab-2" :class="currentTab === 2 ? 'bg-gray-100 text-gray-900 hover:bg-gray-200' : 'bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-900'" class="ml-2 rounded-md border border-transparent px-3 py-1.5 text-sm font-medium" aria-controls="tabs-1-panel-2" role="tab" type="button">Preview</button>
 
                                     <!-- These buttons are here simply as examples and don't actually do anything. -->
                                     <div class="ml-auto flex items-center space-x-5">
@@ -83,7 +83,7 @@
                                     <div x-show="currentTab === 1" id="tabs-1-panel-1" class="-m-0.5 rounded-lg p-0.5" aria-labelledby="tabs-1-tab-1" role="tabpanel" tabindex="0">
                                         <label for="code" class="sr-only">code</label>
                                         <div>
-                                            <textarea rows="5" name="code" id="code" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Add your code..."></textarea>
+                                            <textarea rows="5" name="code" id="code" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6" placeholder="Your PHP snippet here"></textarea>
                                         </div>
                                     </div>
                                     <div x-show="currentTab === 2" id="tabs-1-panel-2" class="-m-0.5 rounded-lg p-0.5" aria-labelledby="tabs-1-tab-2" role="tabpanel" tabindex="0">
@@ -99,7 +99,7 @@
                             <div class="flex items-center gap-4">
                                 <x-primary-button>{{ __('Submit') }}</x-primary-button>
 
-                                @if (session('status') === 'tip-created')
+                                @if (session('status') === 'nudge-created')
                                 <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="text-sm text-gray-600">{{ __('Created.') }}</p>
                                 @endif
                             </div>
@@ -114,13 +114,35 @@
     @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>
-        function handleClick(e) {
-            delete document.querySelector('.language-php').dataset.highlighted;
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('tabs', () => ({
+                currentTab: 1,
 
+                resetHighlight(previewElement) {
+                    delete previewElement.dataset.highlighted;
+                },
 
-            document.querySelector('.language-php').innerHTML = document.querySelector('#code').value;
-            hljs.highlightElement(document.querySelector('.language-php'));
-        }
+                previewCode() {
+                    const preview = document.querySelector('.language-php');
+                    const textArea = document.querySelector('#code');
+
+                    this.resetHighlight(preview);
+
+                    preview.innerHTML = textArea.value;
+                    hljs.highlightElement(preview);
+                },
+
+                showFirstTab() {
+                    this.currentTab = 1;
+                },
+
+                showSecondTab() {
+                    this.currentTab = 2;
+
+                    this.previewCode();
+                }
+            }));
+        });
 
     </script>
     @endpush

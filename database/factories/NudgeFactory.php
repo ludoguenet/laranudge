@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Tip>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Nudge>
  */
-class TipFactory extends Factory
+class NudgeFactory extends Factory
 {
     /**
      * Define the model's default state.

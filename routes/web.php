@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\Nudge\DestroyController;
+use App\Http\Controllers\Nudge\StoreController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Tip\StoreController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,11 +22,12 @@ Route::get('/', HomePageController::class)->name('homepage');
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
 
-    Route::prefix('tips')
-        ->as('tips.')
+    Route::prefix('nudges')
+        ->as('nudges.')
         ->group(function () {
-            Route::view('/create', 'tips.create')->name('create');
+            Route::view('/create', 'nudges.create')->name('create');
             Route::post('/', StoreController::class)->name('store');
+            Route::delete('/{nudge}', DestroyController::class)->name('destroy');
         });
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

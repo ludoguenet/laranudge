@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tips', function (Blueprint $table) {
+        Schema::create('nudges', function (Blueprint $table) {
             $table->id();
 
             $table->text('content');
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tips');
+        Schema::dropIfExists('nudges');
     }
 };
