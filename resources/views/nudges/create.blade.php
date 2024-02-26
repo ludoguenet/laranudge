@@ -87,8 +87,8 @@
                                         </div>
                                     </div>
                                     <div x-show="currentTab === 2" id="tabs-1-panel-2" class="-m-0.5 rounded-lg p-0.5" aria-labelledby="tabs-1-tab-2" role="tabpanel" tabindex="0">
-                                        <div>
-                                            <div class="mx-px mt-px pt-2 text-sm leading-5 text-gray-800">
+                                        <div class="border-b">
+                                            <div class="mx-px mt-px px-3 pb-12 pt-2 text-sm leading-5 text-gray-800">
                                                 <pre><code class="language-php"></code></pre>
                                             </div>
                                         </div>

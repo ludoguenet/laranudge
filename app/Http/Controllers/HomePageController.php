@@ -4,13 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Nudge;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class HomePageController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     */
-    public function __invoke(Request $request)
+    public function __invoke(): View
     {
         $synonyms = collect([
             'awesome',
