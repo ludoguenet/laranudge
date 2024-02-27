@@ -37,7 +37,7 @@
                         <p class="text-sm text-green-700">No nudge posted yet.</p>
                         <p class="mt-3 text-sm md:ml-6 md:mt-0">
                             <a href="{{ route('nudges.create') }}" class="whitespace-nowrap font-medium text-green-700 hover:text-green-600">
-                                Be the first
+                                Share the first nudge!
                                 <span aria-hidden="true"> &rarr;</span>
                             </a>
                         </p>

@@ -16,7 +16,7 @@
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
         "larastan/larastan": "^2.0",
-        "laravel/pint": "^1.0",
+        "laravel/pint": "^1.14",
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
@@ -52,6 +52,17 @@
         ],
         "stan": [
             "@php ./vendor/bin/phpstan analyse"
+        ],
+        "pint": [
+            "@php ./vendor/bin/pint"
+        ],
+        "test": [
+            "@php ./vendor/bin/pest"
+        ],
+        "qa": [
+            "@php ./vendor/bin/phpstan analyse",
+            "@php ./vendor/bin/pint",
+            "@php ./vendor/bin/pest"
         ]
     },
     "extra": {

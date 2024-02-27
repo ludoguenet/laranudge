@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
@@ -26,7 +28,7 @@ class Nudge extends Model
     }
 
     /**
-     * @param Builder<Nudge> $query
+     * @param  Builder<Nudge>  $query
      */
     public function scopeValidated(
         Builder $query,

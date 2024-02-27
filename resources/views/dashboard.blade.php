@@ -14,6 +14,7 @@
                         <p class="mt-2 text-sm text-gray-700">A list of all your nudges and their status.</p>
                     </div>
                 </div>
+                @if(auth()->user()->nudges->isNotEmpty())
                 <div class="mt-8 flow-root">
                     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
@@ -52,6 +53,13 @@
                         </div>
                     </div>
                 </div>
+                @else
+                <div class="sm:flex sm:items-center">
+                    <div class="sm:flex-auto">
+                        <p class="mt-2 text-sm text-gray-700">You shared no nudge.</p>
+                    </div>
+                </div>
+                @endif
             </div>
         </div>
     </div>

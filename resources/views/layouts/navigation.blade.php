@@ -17,7 +17,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('nudges.create')" :active="request()->routeIs('nudges.create')">
-                        {{ __('Rocket your nudge!') }}
+                        {{ __('Share your nudge!') }}
                     </x-nav-link>
                 </div>
                 @endauth
@@ -57,7 +57,7 @@
                 </x-dropdown>
                 @else
                 <a href="{{ route('nudges.create') }}">
-                    <x-primary-button>Rocket your nudge!</x-primary-button>
+                    <x-primary-button>Share a nudge!</x-primary-button>
                 </a>
                 @endauth
             </div>
@@ -84,7 +84,7 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('nudges.create')" :active="request()->routeIs('nudges.create')">
-                {{ __('Rocket your nudge!') }}
+                {{ __('Share your nudge!') }}
             </x-responsive-nav-link>
         </div>
 

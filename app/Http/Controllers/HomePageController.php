@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Models\Nudge;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class HomePageController extends Controller
