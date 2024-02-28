@@ -14,12 +14,16 @@
     @stack('styles')
 </head>
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-50">
+    <div class="min-h-screen flex flex-col bg-gray-50">
         @include('layouts.navigation')
 
         <main>
             {{ $slot }}
         </main>
+
+        @unless(request()->routeIs('homepage'))
+        @include('layouts.footer')
+        @endunless
     </div>
 
     @stack('scripts')
