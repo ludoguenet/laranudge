@@ -1,5 +1,5 @@
 <section class="space-y-6">
-    <x-danger-button x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-nudge-deletion')">{{ __('Delete Account') }}</x-danger-button>
+    <x-danger-button x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-nudge-deletion')">{{ __('Delete Nudge') }}</x-danger-button>
 
     <x-modal name="confirm-nudge-deletion" :show="$errors->nudgeDeletion->isNotEmpty()" focusable>
         <form method="post" action="{{ route('nudges.destroy', $nudge) }}" class="p-6">
