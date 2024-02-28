@@ -30,7 +30,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-gray-200 bg-white">
-                                    @foreach(auth()->user()->nudges()->latest() as $nudge)
+                                    @foreach(auth()->user()->nudges()->latest()->get() as $nudge)
                                     <tr>
                                         <td class="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
                                             <div class="flex items-center">
