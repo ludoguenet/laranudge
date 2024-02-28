@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Admin Dashboard') }}
         </h2>
     </x-slot>
 
@@ -11,10 +11,10 @@
                 <div class="sm:flex sm:items-center">
                     <div class="sm:flex-auto">
                         <h1 class="text-base font-semibold leading-6 text-gray-900">Dashboard</h1>
-                        <p class="mt-2 text-sm text-gray-700">A list of all your nudges and their status.</p>
+                        <p class="mt-2 text-sm text-gray-700">A list of all members nudges and their status.</p>
                     </div>
                 </div>
-                @if(auth()->user()->nudges->isNotEmpty())
+                @if($nudges->isNotEmpty())
                 <div class="mt-8 flow-root">
                     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
@@ -30,7 +30,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-gray-200 bg-white">
-                                    @foreach(auth()->user()->nudges as $nudge)
+                                    @foreach($nudges as $nudge)
                                     <tr>
                                         <td class="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
                                             <div class="flex items-center">
@@ -56,7 +56,7 @@
                 @else
                 <div class="sm:flex sm:items-center">
                     <div class="sm:flex-auto">
-                        <p class="mt-2 text-sm text-gray-700">You have shared no nudge.</p>
+                        <p class="mt-2 text-sm text-gray-700">No nudge at the moment.</p>
                     </div>
                 </div>
                 @endif
