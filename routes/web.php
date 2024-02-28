@@ -22,6 +22,9 @@ Route::get('/', HomePageController::class)->name('homepage');
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
 
+    Route::view('/privacy', 'privacy')->name('privacy');
+    Route::view('/about', 'about')->name('about');
+
     Route::prefix('nudges')
         ->as('nudges.')
         ->group(function () {

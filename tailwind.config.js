@@ -16,7 +16,7 @@ export default {
             pattern: /bg-(red|green)-(50)/,
             pattern: /ring-(red|green)-(600)/,
         },
-      ],
+    ],
 
     theme: {
         extend: {
