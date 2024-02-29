@@ -55,4 +55,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Nudge::class);
     }
+
+    public function isAdmin(): bool
+    {
+        return $this->is_admin === true;
+    }
 }

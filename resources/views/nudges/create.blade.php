@@ -51,7 +51,7 @@
                                     <button @click="showSecondTab" id="tabs-1-tab-2" :class="currentTab === 2 ? 'bg-gray-100 text-gray-900 hover:bg-gray-200' : 'bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-900'" class="ml-2 rounded-md border border-transparent px-3 py-1.5 text-sm font-medium" aria-controls="tabs-1-panel-2" role="tab" type="button">Preview</button>
 
                                     <!-- These buttons are here simply as examples and don't actually do anything. -->
-                                    <div class="ml-auto flex items-center space-x-5">
+                                    {{-- <div class="ml-auto flex items-center space-x-5">
                                         <div class="flex items-center">
                                             <button type="button" class="-m-2.5 inline-flex h-10 w-10 items-center justify-center rounded-full text-gray-400 hover:text-gray-500">
                                                 <span class="sr-only">Insert link</span>
@@ -77,7 +77,7 @@
                                                 </svg>
                                             </button>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="mt-2">
                                     <div x-show="currentTab === 1" id="tabs-1-panel-1" class="-m-0.5 rounded-lg p-0.5" aria-labelledby="tabs-1-tab-1" role="tabpanel" tabindex="0">
@@ -100,7 +100,7 @@
                                 <x-primary-button>{{ __('Submit') }}</x-primary-button>
 
                                 @if (session('status') === 'nudge-created')
-                                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="text-sm text-gray-600">{{ __('Created.') }}</p>
+                                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 4000)" class="text-sm text-gray-600">{{ __('Nudge ready! Awaiting validation. Almost there!') }}</p>
                                 @endif
                             </div>
                         </form>
