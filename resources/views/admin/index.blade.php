@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 @else
-                <div class="sm:flex sm:items-center">
+                <div class="sm:flex sm:items-center mt-5">
                     <div class="sm:flex-auto">
                         <p class="mt-2 text-sm text-gray-700">No nudge at the moment.</p>
                     </div>
