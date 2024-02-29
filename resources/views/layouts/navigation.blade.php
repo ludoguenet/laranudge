@@ -78,6 +78,12 @@
                     </svg>
                 </button>
             </div>
+            @else
+            <div class="-me-2 flex items-center sm:hidden">
+                <a href="{{ route('nudges.create') }}">
+                    <x-primary-button>Share a nudge!</x-primary-button>
+                </a>
+            </div>
             @endauth
         </div>
     </div>
