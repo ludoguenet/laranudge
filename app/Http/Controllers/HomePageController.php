@@ -35,8 +35,13 @@ class HomePageController extends Controller
 
         $randomSynonym = $synonyms->random();
 
+        $randomNudge = Nudge::query()
+            ->validated()
+            ->inRandomOrder()
+            ->first();
+
         return view('homepage', [
-            'nudge' => Nudge::validated()->inRandomOrder()->first(),
+            'nudge' => $randomNudge,
             'randomSynonym' => $randomSynonym,
         ]);
     }
