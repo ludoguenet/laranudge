@@ -44,14 +44,6 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
-                        <x-dropdown-link :href="route('about')">
-                            {{ __('About') }}
-                        </x-dropdown-link>
-
-                        <x-dropdown-link :href="route('privacy')">
-                            {{ __('Privacy Policy') }}
-                        </x-dropdown-link>
-
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
