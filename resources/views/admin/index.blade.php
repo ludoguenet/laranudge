@@ -43,8 +43,15 @@
                                             <span class="inline-flex items-center rounded-md bg-{{ $nudge->validated === true ? 'green' : 'red' }}-50 px-2 py-1 text-xs font-medium text-{{ $nudge->validated === true ? 'green' : 'red' }}-700 ring-1 ring-inset ring-{{ $nudge->validated === true ? 'green' : 'red' }}-600/20">{{ $nudge->validated === true ? 'validated' : 'not validated' }}</span>
                                         </td>
                                         <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">{{ $nudge->created_at->format('Y/m/d') }}</td>
-                                        <td class="relative whitespace-nowrap py-5 pl-3 pr-4 text-left text-sm font-medium sm:pr-0">
+                                        <td class="flex items-center space-x-5 relative whitespace-nowrap py-5 pl-3 pr-4 text-left text-sm font-medium sm:pr-0">
                                             @include('nudges.partials.delete-nudge-form')
+                                            <!-- Enabled: "bg-green-600", Not Enabled: "bg-gray-200" -->
+                                            <button x-data="toggles({{ $nudge->validated }})" @click="toggle({{ $nudge->id }})" type="button" :class="isToggled ? 'bg-green-600' : 'bg-gray-200'" class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2" role="switch" aria-checked="false">
+                                                <span class="sr-only">Use setting</span>
+                                                <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
+                                                <span aria-hidden="true" :class="isToggled ? 'translate-x-5' : 'translate-x-0'" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+                                            </button>
+
                                         </td>
                                     </tr>
                                     @endforeach
@@ -63,4 +70,24 @@
             </div>
         </div>
     </div>
+
+    @push('scripts')
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('toggles', (initialToggleState = false) => ({
+                isToggled: initialToggleState,
+
+                toggle(nudge) {
+                    this.isToggled = !this.isToggled;
+                    axios.get('/sanctum/csrf-cookie').then(response => {
+                        axios.put(`/api/${nudge}`).then(response => {
+                            console.log(response);
+                        });
+                    });
+                }
+            }));
+        });
+
+    </script>
+    @endpush
 </x-app-layout>

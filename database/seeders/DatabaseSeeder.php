@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'Laravel Jutsu',
             'email' => 'd45h83@gmail.com',
-            'is_admin' => true,
+            'admin' => true,
         ]);
     }
 }

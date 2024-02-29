@@ -16,7 +16,17 @@ class Nudge extends Model
     protected $fillable = [
         'content',
         'code',
+        'validated',
         'user_id',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'validated' => 'boolean',
     ];
 
     /**

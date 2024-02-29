@@ -24,7 +24,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
-        'is_admin',
+        'admin',
     ];
 
     /**
@@ -45,7 +45,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
-        'is_admin' => 'boolean',
+        'admin' => 'boolean',
     ];
 
     /**
@@ -58,6 +58,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function isAdmin(): bool
     {
-        return $this->is_admin === true;
+        return $this->admin === true;
     }
 }
