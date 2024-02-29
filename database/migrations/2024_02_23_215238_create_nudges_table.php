@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('content');
             $table->text('code');
 
-            $table->boolean('validated')->default('false');
+            $table->boolean('validated')->default(false);
 
             $table
                 ->foreignIdFor(User::class)
