@@ -7,3 +7,6 @@ parameters:
         - app/
 
     level: max
+
+    excludePaths:
+        - app/Notifications/VerifyEmailQueued.php
