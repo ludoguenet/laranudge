@@ -45,9 +45,9 @@
                         </x-dropdown-link>
 
                         @if(auth()->user()->isAdmin())
-                        <x-dropdown-link :href="route('admin.index')">
-                            {{ __('Admin Dashboard') }}
-                        </x-dropdown-link>
+                            <x-dropdown-link :href="route('admin.index')">
+                                {{ __('Admin Dashboard') }}
+                            </x-dropdown-link>
                         @endif
 
                         <!-- Authentication -->
@@ -95,6 +95,11 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            @if(auth()->user()->isAdmin())
+                <x-responsive-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
+                    {{ __('Admin Dashboard') }}
+                </x-responsive-nav-link>
+            @endif
             <x-responsive-nav-link :href="route('nudges.create')" :active="request()->routeIs('nudges.create')">
                 {{ __('Share your nudge!') }}
             </x-responsive-nav-link>
