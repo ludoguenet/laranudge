@@ -4,7 +4,7 @@
     </x-slot>
 
     <div class="px-6 py-24 sm:py-32 lg:px-8">
-        <div class="mx-auto max-w-2xl">
+        <div class="mx-auto max-w-4xl">
             @if ($nudge)
             <article class="text-md leading-8 text-gray-500 sm:text-lg mb-5">
                 {{ $nudge->content }}
