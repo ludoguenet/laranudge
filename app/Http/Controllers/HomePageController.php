@@ -31,11 +31,32 @@ class HomePageController extends Controller
             'majestic',
             'legendary',
             'top-notch',
+            'formidable',
+            'breathtaking',
+            'stunning',
+            'sublime',
+            'astonishing',
+            'surprising',
+            'staggering',
+            'sensational',
+            'exceptional',
+            'grandiose',
+            'eloquent',
+            'epic',
+            'impeccable',
+            'radiant',
+            'moving',
+            'fabulous',
+            'divine',
+            'mind-blowing',
+            'splendiferous',
+            'out of this world',
         ]);
 
         $randomSynonym = $synonyms->random();
 
         $randomNudge = Nudge::query()
+            ->withCount('likes')
             ->validated()
             ->inRandomOrder()
             ->first();

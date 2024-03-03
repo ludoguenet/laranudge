@@ -42,7 +42,7 @@
                                         <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
                                             <span class="inline-flex items-center rounded-md bg-{{ $nudge->validated === true ? 'green' : 'red' }}-50 px-2 py-1 text-xs font-medium text-{{ $nudge->validated === true ? 'green' : 'red' }}-700 ring-1 ring-inset ring-{{ $nudge->validated === true ? 'green' : 'red' }}-600/20">{{ $nudge->validated === true ? 'validated' : 'not validated' }}</span>
                                         </td>
-                                        <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">{{ $nudge->created_at->format('Y/m/d') }}</td>
+                                        <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">{{ $nudge->created_at->format('m/d/Y') }}</td>
                                         <td class="flex items-center space-x-5 relative whitespace-nowrap py-5 pl-3 pr-4 text-left text-sm font-medium sm:pr-0">
                                             @include('nudges.partials.delete-nudge-form')
                                             <!-- Enabled: "bg-green-600", Not Enabled: "bg-gray-200" -->
@@ -77,13 +77,10 @@
             Alpine.data('toggles', (initialToggleState = false) => ({
                 isToggled: initialToggleState,
 
-                toggle(nudge) {
+                async toggle(nudge) {
                     this.isToggled = !this.isToggled;
-                    axios.get('/sanctum/csrf-cookie').then(response => {
-                        axios.put(`/api/${nudge}`).then(response => {
-                            console.log(response);
-                        });
-                    });
+                    await axios.get('/sanctum/csrf-cookie')
+                        .then(async () => await axios.put(`/api/admin/nudges/${nudge}/validate`));
                 }
             }));
         });

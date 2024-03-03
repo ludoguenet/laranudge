@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Contracts\Likeable;
 use App\Notifications\VerifyEmailQueued;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -55,6 +56,38 @@ class User extends Authenticatable implements MustVerifyEmail
     public function nudges(): HasMany
     {
         return $this->hasMany(Nudge::class);
+    }
+
+    /**
+     * @return HasMany<Like>
+     */
+    public function likes(): HasMany
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function like(Likeable $likeable): void
+    {
+        (new Like())
+            ->user()->associate($this)
+            ->likeable()->associate($likeable)
+            ->save();
+    }
+
+    public function unlike(Likeable $likeable): void
+    {
+        $likeable
+            ->likes()
+            ->whereHas('user', fn ($query) => $query->where('id', $this->id))
+            ->delete();
+    }
+
+    public function isLiked(Likeable $likeable): bool
+    {
+        return $likeable
+            ->likes()
+            ->whereHas('user', fn ($query) => $query->where('id', $this->id))
+            ->exists();
     }
 
     public function isAdmin(): bool

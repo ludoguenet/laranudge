@@ -12,8 +12,8 @@ it('can validate nudges', function () {
     $nudge = Nudge::factory()->create();
 
     actingAs($user)
-        ->put(route('api.nudges.toggle', $nudge))
-        ->assertOk();
+        ->put(route('api.admin.nudges.validate', $nudge))
+        ->assertNoContent();
 
     expect($nudge->refresh()->validated)->toBeTrue();
 });
@@ -23,7 +23,7 @@ it('can not validate nudges', function () {
     $nudge = Nudge::factory()->create();
 
     actingAs($user)
-        ->put(route('api.nudges.toggle', $nudge))
+        ->put(route('api.admin.nudges.validate', $nudge))
         ->assertRedirect();
 
     expect($nudge->refresh()->validated)->toBeFalse();

@@ -2,22 +2,28 @@
 
 declare(strict_types=1);
 
-use App\Models\Nudge;
+use App\Http\Controllers\Api\Admin\ValidateNudgeController;
+use App\Http\Controllers\Api\Nudge\ToggleLikeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['admin', 'auth:sanctum'])->group(function () {
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/user', fn (Request $request) => $request->user());
 
-    Route::put('/{nudge}', function (Nudge $nudge) {
-        $nudge->update([
-            'validated' => ! $nudge->validated,
-        ]);
+    Route::prefix('nudges')
+        ->as('nudges.')
+        ->group(function () {
+            Route::post('/toggle-like/{nudge}', ToggleLikeController::class)->name('like');
+        });
 
-        return response()->json([
-            'response' => $nudge->validated,
-        ]);
-    })->name('nudges.toggle');
+    Route::middleware('admin')
+        ->prefix('admin')
+        ->as('admin.')
+        ->group(function () {
+            Route::prefix('nudges')
+                ->as('nudges.')
+                ->group(function () {
+                    Route::put('/{nudge}/validate', ValidateNudgeController::class)->name('validate');
+                });
+        });
 });
