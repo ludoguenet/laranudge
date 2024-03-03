@@ -13,7 +13,7 @@
             <![CDATA[ Share your favourite Laravel tips ]]>
         </description>
         <language>en</language>
-        <pubDate>{{ now() }}</pubDate>
+        <pubDate>{{ now()->toRfc822String() }}</pubDate>
 
         @foreach($nudges as $nudge)
         <item>
