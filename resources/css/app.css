@@ -7,7 +7,7 @@
  overflow-x-auto is recommended.
 */
 pre {
-    @apply rounded overflow-x-auto;
+    @apply mb-4 rounded overflow-x-auto;
 }
 
 /*
@@ -37,3 +37,26 @@ pre code.torchlight .summary-caret {
 }
 
 [x-cloak] { display: none !important; }
+
+/* width */
+::-webkit-scrollbar {
+    height: 5px;
+    width: 4px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    background: #e2e8f0;
+    border-radius: 5px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 5px;
+}
+ 
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
