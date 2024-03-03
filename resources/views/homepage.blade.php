@@ -44,7 +44,7 @@
                         <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" class="fill-gray-900">
                             <circle cx="1" cy="1" r="1" />
                         </svg>
-                        <div class="text-gray-600">This {{ $randomSynonym }} <span class="text-green-500">nudge</span> was posted on {{ $nudge->created_at->format('m/d/Y') }}</div>
+                        <div class="text-gray-600">This {{ $randomSynonym }} <span class="text-green-500">nudge</span> was posted {{ $nudge->created_at->since() }}</div>
                     </div>
                 </figcaption>
             </div>
