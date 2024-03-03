@@ -7,9 +7,11 @@ use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\Nudge\DestroyController;
 use App\Http\Controllers\Nudge\StoreController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RSSFeedController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomePageController::class)->name('homepage');
+Route::get('feed', RSSFeedController::class)->name('rss.feed');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', DashBoardController::class)->name('dashboard');
