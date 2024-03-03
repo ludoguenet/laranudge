@@ -6,6 +6,27 @@
                 <article class="flex items-center justify-between text-md leading-8 text-gray-500 sm:text-lg mb-2.5">
                     <p>{{ $nudge->content }}</p>
                     <input type="text" value="{!! $nudge->code !!}" x-ref="content" class="hidden">
+                </article>
+
+                <pre>
+                    <x-torchlight-code language='php'>{!! $nudge->code !!}</x-torchlight-code>
+                </pre>
+
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-center gap-1">
+                        <div x-ref="likesCount" class="text-gray-400 text-xs">{{ $nudge->likes_count }}</div>
+                        @auth
+                        <button @click="toggleLike({{ $nudge->id }})" x-cloak class="focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3 transition ease-in-out duration-300" :class="isLiked ? 'text-green-300 hover:text-green-400' : 'text-gray-300 hover:text-gray-400'">
+                                <path d="m9.653 16.915-.005-.003-.019-.01a20.759 20.759 0 0 1-1.162-.682 22.045 22.045 0 0 1-2.582-1.9C4.045 12.733 2 10.352 2 7.5a4.5 4.5 0 0 1 8-2.828A4.5 4.5 0 0 1 18 7.5c0 2.852-2.044 5.233-3.885 6.82a22.049 22.049 0 0 1-3.744 2.582l-.019.01-.005.003h-.002a.739.739 0 0 1-.69.001l-.002-.001Z" />
+                            </svg>
+                        </button>
+                        @else
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3 text-green-400">
+                            <path d="m9.653 16.915-.005-.003-.019-.01a20.759 20.759 0 0 1-1.162-.682 22.045 22.045 0 0 1-2.582-1.9C4.045 12.733 2 10.352 2 7.5a4.5 4.5 0 0 1 8-2.828A4.5 4.5 0 0 1 18 7.5c0 2.852-2.044 5.233-3.885 6.82a22.049 22.049 0 0 1-3.744 2.582l-.019.01-.005.003h-.002a.739.739 0 0 1-.69.001l-.002-.001Z" />
+                        </svg>
+                        @endauth
+                    </div>
                     <div class="relative">
                         <div x-show="copySuccess" x-transition x-cloak role="tooltip" class="absolute right-0 z-10 inline-block px-2 py-1 text-xs text-white transition-opacity duration-300 bg-green-500 rounded-md shadow-sm">
                             <span>copied!</span>
@@ -17,28 +38,9 @@
                             </svg>
                         </button>
                     </div>
-                </article>
-
-                <pre>
-                <x-torchlight-code language='php'>{!! $nudge->code !!}</x-torchlight-code>
-            </pre>
+                </div>
 
                 <figcaption class="mt-10">
-                    <div class="flex items-center justify-center gap-1">
-                        <div x-ref="likesCount" class="text-gray-400 text-xs">{{ $nudge->likes_count }}</div>
-                        @auth
-                        <button @click="toggleLike({{ $nudge->id }})" x-cloak class="focus:outline-none">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3 transition ease-in-out duration-300" :class="isLiked ? 'text-green-300 hover:text-green-400' : 'text-gray-300 hover:text-gray-400'">
-                                <path d="m9.653 16.915-.005-.003-.019-.01a20.759 20.759 0 0 1-1.162-.682 22.045 22.045 0 0 1-2.582-1.9C4.045 12.733 2 10.352 2 7.5a4.5 4.5 0 0 1 8-2.828A4.5 4.5 0 0 1 18 7.5c0 2.852-2.044 5.233-3.885 6.82a22.049 22.049 0 0 1-3.744 2.582l-.019.01-.005.003h-.002a.739.739 0 0 1-.69.001l-.002-.001Z" />
-                            </svg>
-                        </button>
-                        @else
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3 transition ease-in-out duration-150 text-green-300 hover:text-green-400">
-                            <path d="m9.653 16.915-.005-.003-.019-.01a20.759 20.759 0 0 1-1.162-.682 22.045 22.045 0 0 1-2.582-1.9C4.045 12.733 2 10.352 2 7.5a4.5 4.5 0 0 1 8-2.828A4.5 4.5 0 0 1 18 7.5c0 2.852-2.044 5.233-3.885 6.82a22.049 22.049 0 0 1-3.744 2.582l-.019.01-.005.003h-.002a.739.739 0 0 1-.69.001l-.002-.001Z" />
-                        </svg>
-                        @endauth
-                        <div class="text-gray-400 text-xs">given to this nudge.</div>
-                    </div>
                     <div class="mt-4 flex items-center justify-center space-x-3 text-base">
                         <div class="font-semibold text-gray-900">{{ $nudge->user->name }}</div>
                         <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" class="fill-gray-900">
