@@ -10,6 +10,10 @@ pre {
     @apply mb-2 rounded overflow-x-auto;
 }
 
+pre code {
+    @apply -mb-3;
+}
+
 /*
  Add some vertical padding and expand the width
  to fill its container. The horizontal padding
