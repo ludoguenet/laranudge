@@ -40,7 +40,7 @@
                     </div>
                 </div>
 
-                <figcaption class="mt-10">
+                <figcaption class="mt-7">
                     <div class="mt-4 flex items-center justify-center space-x-3 text-base">
                         <div class="font-semibold text-gray-900">{{ $nudge->user->name }}</div>
                         <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" class="fill-gray-900">
