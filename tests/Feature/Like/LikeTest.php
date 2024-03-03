@@ -34,7 +34,7 @@ it('can unlike nudges', function () {
     assertDatabaseCount('likes', 0);
 });
 
-it('can say if liked', function () {
+it('can determine if liked', function () {
     $nudge = Nudge::factory()->create();
     $user = User::factory()->create();
 
@@ -43,7 +43,7 @@ it('can say if liked', function () {
     expect($user->isLiked($nudge))->toBeTrue();
 });
 
-it('can say if not liked', function () {
+it('can determine if not liked', function () {
     $nudge = Nudge::factory()->create();
     $user = User::factory()->create();
 
