@@ -23,7 +23,7 @@
             <description>
                 <![CDATA[{!! $nudge->code !!}]]>
             </description>
-            <pubDate>{{ $nudge->created_at->toRfc822String() }}</pubDate>
+            <pubDate>{{ $nudge->created_at->format('Y-m-d H:i:s', '2012-10-23 14:51:12.0') }}</pubDate>
         </item>
         @endforeach
     </channel>
