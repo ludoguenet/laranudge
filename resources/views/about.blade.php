@@ -15,7 +15,7 @@
                     <div class="mt-10">
                         <p>I believe that absorbing knowledge from a tip gives your skills or app a "nudge" to excel even further! 🥤</p>
 
-                        <p>That's why I created <a href="laranudge.com" class="underline">laranudge.com</a>, to share our favourite tips on Laravel. It aims to be simple and minimalist.</p>
+                        <p>That's why I created <a href="{{ config('app.url') }}" class="underline">laranudge.com</a>, to share our favourite tips on Laravel. It aims to be simple and minimalist.</p>
                     </div>
                 </div>
 
