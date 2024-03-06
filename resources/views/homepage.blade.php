@@ -5,7 +5,7 @@
             <div x-data="nudge({{ Js::from(auth()->user()?->isLiked($nudge)) }})">
                 <article class="flex items-center justify-between text-md leading-8 text-gray-500 sm:text-lg mb-2.5">
                     <p>{{ $nudge->content }}</p>
-                    <input type="text" value="{!! $nudge->code !!}" x-ref="content" class="hidden">
+                    <textarea type="text" x-ref="content" class="hidden">{!! $nudge->code !!}</textarea>
                 </article>
 
                 <pre>
@@ -93,7 +93,7 @@
                 copyCode(content) {
                     content.select();
                     content.setSelectionRange(0, 99999);
-                    navigator.clipboard.writeText(content.value);
+                    navigator.clipboard.writeText(content.innerText);
 
                     this.resetCopySuccess();
                 },
