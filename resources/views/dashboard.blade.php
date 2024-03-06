@@ -32,7 +32,7 @@
                                 <tbody class="divide-y divide-gray-200 bg-white">
                                     @foreach($nudges as $nudge)
                                     <tr>
-                                        <td class="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
+                                        <td class="whitespace-nowrap py-5 pl-4 pr-3 text-sm">
                                             <div class="flex items-center">
                                                 <div x-data="" x-on:click.prevent="$dispatch('open-modal', 'nudge-preview-{{ $nudge->id }}')" class="flex-shrink-0 hover:cursor-pointer hover:text-green-500 transition ease-in-out duration-300">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
