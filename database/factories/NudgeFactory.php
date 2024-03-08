@@ -18,7 +18,12 @@ class NudgeFactory extends Factory
      */
     public function definition(): array
     {
+        $title = Str::random();
+        $slug = Str::slug($title);
+
         return [
+            'title' => $title,
+            'slug' => $slug,
             'content' => Str::random(),
             'code' => Str::random(),
             'validated' => false,

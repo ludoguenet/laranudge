@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\Nudge\DestroyController;
+use App\Http\Controllers\Nudge\ShowController;
 use App\Http\Controllers\Nudge\StoreController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RSSFeedController;
@@ -23,6 +24,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->as('nudges.')
         ->group(function () {
             Route::view('/create', 'nudges.create')->name('create');
+            Route::get('/{nudge:slug}', ShowController::class)->name('show');
             Route::post('/', StoreController::class)->name('store');
             Route::delete('/{nudge}', DestroyController::class)->name('destroy');
         });

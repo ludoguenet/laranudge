@@ -24,6 +24,7 @@
                 <![CDATA[{!! $nudge->code !!}]]>
             </description>
             <pubDate>{{ $nudge->created_at->toRfc822String() }}</pubDate>
+            <link>{{ route('nudges.show', $nudge) }}</link>
         </item>
         @endforeach
     </channel>

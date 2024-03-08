@@ -21,7 +21,8 @@
                             <table class="min-w-full divide-y divide-gray-300">
                                 <thead>
                                     <tr>
-                                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Content</th>
+                                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Title</th>
+                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Author</th>
                                         <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Status</th>
                                         <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
                                         <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
@@ -52,15 +53,23 @@
                                                     </div>
                                                 </x-modal>
                                                 <div class="ml-4">
-                                                    <div class="text-gray-500" title="{{ $nudge->content }}">{{ Str::limit($nudge->content, 70) }}</div>
+                                                    <div class="text-gray-500" title="{{ $nudge->content }}">{{ Str::limit($nudge->title, 70) }}</div>
                                                 </div>
                                             </div>
+                                        </td>
+                                        <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                                            <span>{{ $nudge->user->name }}</span>
                                         </td>
                                         <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
                                             <span class="inline-flex items-center rounded-md bg-{{ $nudge->validated === true ? 'green' : 'red' }}-50 px-2 py-1 text-xs font-medium text-{{ $nudge->validated === true ? 'green' : 'red' }}-700 ring-1 ring-inset ring-{{ $nudge->validated === true ? 'green' : 'red' }}-600/20">{{ $nudge->validated === true ? 'validated' : 'not validated' }}</span>
                                         </td>
                                         <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">{{ $nudge->created_at->format('m/d/Y') }}</td>
                                         <td class="flex items-center space-x-5 relative whitespace-nowrap py-5 pl-3 pr-4 text-left text-sm font-medium sm:pr-0">
+                                            <a href="{{ route('admin.nudges.edit', $nudge) }}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                                                </svg>
+                                            </a>
                                             @include('nudges.partials.delete-nudge-form', ['nudgeId' => $nudge->id])
                                             <!-- Enabled: "bg-green-500", Not Enabled: "bg-gray-200" -->
                                             <button x-data="toggles({{ $nudge->validated }})" @click="toggle({{ $nudge->id }})" type="button" :class="isToggled ? 'bg-green-500' : 'bg-gray-200'" class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2" role="switch" aria-checked="false">

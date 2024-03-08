@@ -11,7 +11,10 @@ class RSSFeedController extends Controller
 {
     public function __invoke(): Response
     {
-        $nudges = Nudge::latest()->get();
+        $nudges = Nudge::query()
+            ->validated()
+            ->latest()
+            ->get();
 
         return response()->view('rss', [
             'nudges' => $nudges,

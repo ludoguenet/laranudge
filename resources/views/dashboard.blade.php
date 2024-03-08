@@ -21,7 +21,7 @@
                             <table class="min-w-full divide-y divide-gray-300">
                                 <thead>
                                     <tr>
-                                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Content</th>
+                                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Title</th>
                                         <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Status</th>
                                         <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
                                         <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
@@ -52,7 +52,7 @@
                                                     </div>
                                                 </x-modal>
                                                 <div class="ml-4">
-                                                    <div class="text-gray-500" title="{{ $nudge->content }}">{{ Str::limit($nudge->content, 70) }}</div>
+                                                    <div class="text-gray-500" title="{{ $nudge->content }}">{{ Str::limit($nudge->title, 70) }}</div>
                                                 </div>
                                             </div>
                                         </td>

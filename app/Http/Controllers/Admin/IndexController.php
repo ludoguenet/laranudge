@@ -13,7 +13,10 @@ class IndexController extends Controller
 {
     public function __invoke(Request $request): View
     {
-        $nudges = Nudge::query()->latest()->get();
+        $nudges = Nudge::query()
+            ->with('user')
+            ->latest()
+            ->get();
 
         return view('admin.index', [
             'nudges' => $nudges,

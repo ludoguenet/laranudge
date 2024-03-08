@@ -14,7 +14,8 @@ class StoreController extends Controller
     public function __invoke(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'content' => 'required|string',
+            'title' => 'required|unique:nudges|max:100',
+            'content' => 'required|string|max:500',
             'code' => 'required|string',
         ]);
 
@@ -22,6 +23,7 @@ class StoreController extends Controller
         $user = auth()->user();
 
         $user->nudges()->create([
+            'title' => $validated['title'],
             'content' => $validated['content'],
             'code' => $validated['code'],
         ]);
