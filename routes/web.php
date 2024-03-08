@@ -24,7 +24,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->as('nudges.')
         ->group(function () {
             Route::view('/create', 'nudges.create')->name('create');
-            Route::get('/{nudge:slug}', ShowController::class)->name('show');
             Route::post('/', StoreController::class)->name('store');
             Route::delete('/{nudge}', DestroyController::class)->name('destroy');
         });
@@ -33,5 +32,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::prefix('nudges')
+    ->as('nudges.')
+    ->group(function () {
+        Route::get('/{nudge:slug}', ShowController::class)->name('show');
+    });
 
 require __DIR__.'/auth.php';
