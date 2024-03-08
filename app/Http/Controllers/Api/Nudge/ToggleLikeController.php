@@ -11,8 +11,9 @@ use Illuminate\Http\Response;
 
 class ToggleLikeController extends Controller
 {
-    public function __invoke(Nudge $nudge): Response
-    {
+    public function __invoke(
+        Nudge $nudge,
+    ): Response {
         /** @var User $user */
         $user = auth()->user();
 

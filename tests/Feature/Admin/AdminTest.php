@@ -21,3 +21,5 @@ it('can not access admin', function () {
         ->get(route('admin.index'))
         ->assertRedirect();
 });
+
+it('can edit a nudge')->todo();

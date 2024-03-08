@@ -7,6 +7,8 @@ use App\Models\User;
 
 use function Pest\Laravel\actingAs;
 
+it('can create a nudge')->todo();
+
 it('can validate nudges', function () {
     $user = User::factory()->admin()->create();
     $nudge = Nudge::factory()->create();

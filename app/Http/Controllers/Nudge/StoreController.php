@@ -11,11 +11,12 @@ use Illuminate\Http\Request;
 
 class StoreController extends Controller
 {
-    public function __invoke(Request $request): RedirectResponse
-    {
+    public function __invoke(
+        Request $request,
+    ): RedirectResponse {
         $validated = $request->validate([
-            'title' => 'required|unique:nudges|max:100',
-            'content' => 'required|string|max:500',
+            'title' => 'required|unique:nudges|min:3|max:100',
+            'content' => 'required|string|min:10|max:500',
             'code' => 'required|string',
         ]);
 

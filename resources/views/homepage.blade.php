@@ -3,7 +3,7 @@
         <div class="mx-auto max-w-4xl">
             @if ($nudge)
             <div x-data="nudge({{ Js::from(auth()->user()?->isLiked($nudge)) }})">
-                <h1 class="text-4xl font-bold tracking-tight text-gray-900 mb-5">{{ $nudge->title }}</h1>
+                <h1 class="text-4xl font-bold tracking-tight text-gray-900 mb-5">{{ Str::title($nudge->title) }}</h1>
 
                 <article class="flex items-center justify-between text-md leading-8 text-gray-500 sm:text-lg mb-2.5">
                     <span class="prose">{!! Str::markdown($nudge->content) !!}</span>

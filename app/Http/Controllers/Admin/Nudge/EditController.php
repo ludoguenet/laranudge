@@ -10,9 +10,10 @@ use Illuminate\Contracts\View\View;
 
 class EditController extends Controller
 {
-    public function __invoke(Nudge $nudge): View
-    {
-        return view('nudges.edit', [
+    public function __invoke(
+        Nudge $nudge,
+    ): View {
+        return view('nudges.create', [
             'nudge' => $nudge,
         ]);
     }
