@@ -3,7 +3,7 @@
 ])
 
 <div class="flex-1 px-4 flex items-center justify-center">
-    <div x-data="dropdownSearch({{ Js::from($nudges) }})" class="relative w-full">
+    <div x-data="dropdownSearch({{ Js::from($nudges) }})" x-init="$watch('query', () => selectedNudgeIndex='')" class="relative w-full">
         <input x-model="query" x-on:click.outside="reset()" x-on:keyup.escape="reset()" x-on:keyup.down="selectNextNudge" x-on:keyup.up="selectPreviousNudge" x-on:keyup.enter="goToUrl()" id="combobox" type="text" class="w-full rounded-md border-0 bg-white py-1.5 pl-3 pr-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-green-400 sm:text-sm sm:leading-6" role="combobox" aria-controls="options" aria-expanded="false">
         <button type="button" class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 text-gray-400">
@@ -50,10 +50,13 @@
             },
 
             reset() {
+                this.selectedNudgeIndex = null;
                 this.query = "";
             },
 
             selectNextNudge() {
+                console.log(this.selectedNudgeIndex);
+
                 if (this.filteredNudges.length === 0) return;
 
 
