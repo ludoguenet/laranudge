@@ -1,6 +1,6 @@
 <x-app-layout>
     @push('styles')
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css">
     @endpush
 
     <x-slot name="header">
@@ -46,24 +46,34 @@
                                         <div class="flex items-center">
                                             <button @click.stop="parseToHeadingMarkdown()" type="button" class="-m-2.5 inline-flex h-10 w-10 items-center justify-center rounded-full text-gray-400 hover:text-gray-500">
                                                 <span class="sr-only">Insert heading markdown</span>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 8.25h15m-16.5 7.5h15m-1.8-13.5-3.9 19.5m-2.1-19.5-3.9 19.5" />
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="size-4">
+                                                    <path d="M2.007,12.526l3.156,0l0,7.363l3.155,0l0,-7.363l3.156,0l0,-3.156l-9.467,0m6.311,-5.259l0,3.155l5.26,0l0,12.623l3.156,0l0,-12.623l5.259,0l0,-3.155l-13.675,0Z" style="fill-rule: nonzero;"></path>
                                                 </svg>
                                             </button>
                                         </div>
+
+                                        <div class="flex items-center">
+                                            <button @click.stop="parseToItalicMarkdown()" type="button" class="-m-2.5 inline-flex h-10 w-10 items-center justify-center rounded-full text-gray-400 hover:text-gray-500">
+                                                <span class="sr-only">Insert bold markdown</span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="size-4">
+                                                    <path d="M8.617,3.658l0,3.575l2.633,0l-2.075,9.534l-3.325,0l0,3.575l9.533,0l0,-3.575l-2.633,0l2.075,-9.534l3.325,0l0,-3.575l-9.533,0Z" style="fill-rule: nonzero;"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+
                                         <div class="flex items-center">
                                             <button @click.stop="parseToBoldMarkdown()" type="button" class="-m-2.5 inline-flex h-10 w-10 items-center justify-center rounded-full text-gray-400 hover:text-gray-500">
                                                 <span class="sr-only">Insert bold markdown</span>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+                                                <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                    <path d="M13.35,17.401l-4.201,0l0,-3.601l4.201,0c0.997,0 1.801,0.805 1.801,1.801c0,0.996 -0.804,1.8 -1.801,1.8m-4.201,-10.802l3.601,0c0.996,0 1.801,0.804 1.801,1.8c0,0.996 -0.805,1.801 -1.801,1.801l-3.601,0m6.722,1.548c1.164,-0.816 1.98,-2.149 1.98,-3.349c0,-2.712 -2.1,-4.801 -4.801,-4.801l-7.502,0l0,16.804l8.45,0c2.521,0 4.454,-2.04 4.454,-4.549c0,-1.825 -1.033,-3.385 -2.581,-4.105Z" style="fill-rule: nonzero;"></path>
                                                 </svg>
                                             </button>
                                         </div>
                                         <div class="flex items-center">
                                             <button @click.stop="parseToLinkMarkdown()" type="button" class="-m-2.5 inline-flex h-10 w-10 items-center justify-center rounded-full text-gray-400 hover:text-gray-500">
                                                 <span class="sr-only">Insert link markdown</span>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25" />
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="size-4">
+                                                    <path d="M 10.5858,13.4142C 10.9763,13.8047 10.9763,14.4379 10.5858,14.8284C 10.1952,15.2189 9.56207,15.2189 9.17154,14.8284C 7.21892,12.8758 7.21892,9.70995 9.17154,7.75733L 9.17157,7.75736L 12.707,4.2219C 14.6596,2.26928 17.8255,2.26929 19.7781,4.2219C 21.7307,6.17452 21.7307,9.34034 19.7781,11.293L 18.2925,12.7785C 18.3008,11.9583 18.1659,11.1368 17.8876,10.355L 18.3639,9.87865C 19.5355,8.70708 19.5355,6.80759 18.3639,5.63602C 17.1923,4.46445 15.2929,4.46445 14.1213,5.63602L 10.5858,9.17155C 9.41419,10.3431 9.41419,12.2426 10.5858,13.4142 Z M 13.4142,9.17155C 13.8047,8.78103 14.4379,8.78103 14.8284,9.17155C 16.781,11.1242 16.781,14.29 14.8284,16.2426L 14.8284,16.2426L 11.2929,19.7782C 9.34026,21.7308 6.17444,21.7308 4.22182,19.7782C 2.26921,17.8255 2.2692,14.6597 4.22182,12.7071L 5.70744,11.2215C 5.69913,12.0417 5.8341,12.8631 6.11234,13.645L 5.63601,14.1213C 4.46444,15.2929 4.46444,17.1924 5.63601,18.3639C 6.80758,19.5355 8.70708,19.5355 9.87865,18.3639L 13.4142,14.8284C 14.5858,13.6568 14.5858,11.7573 13.4142,10.5858C 13.0237,10.1952 13.0237,9.56207 13.4142,9.17155 Z "></path>
                                                 </svg>
 
                                             </button>
@@ -103,13 +113,13 @@
                                 <x-primary-button>{{ __('Submit') }}</x-primary-button>
 
                                 @isset($nudge)
-                                    @if (session('status') === 'nudge-edited')
-                                        <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 4000)" class="text-sm text-gray-600">{{ __('Nudge edited! Awaiting validation. Almost there again!') }}</p>
-                                    @endif
+                                @if (session('status') === 'nudge-edited')
+                                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 4000)" class="text-sm text-gray-600">{{ __('Nudge edited! Awaiting validation. Almost there again!') }}</p>
+                                @endif
                                 @else
-                                    @if (session('status') === 'nudge-created')
-                                        <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 4000)" class="text-sm text-gray-600">{{ __('Nudge ready! Awaiting validation. Almost there!') }}</p>
-                                    @endif
+                                @if (session('status') === 'nudge-created')
+                                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 4000)" class="text-sm text-gray-600">{{ __('Nudge ready! Awaiting validation. Almost there!') }}</p>
+                                @endif
                                 @endisset
                             </div>
                         </form>
@@ -121,81 +131,94 @@
     </div>
 
     @push('scripts')
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-        <script>
-            document.addEventListener('alpine:init', () => {
-                Alpine.data('tabs', () => ({
-                    currentTab: 1,
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('tabs', () => ({
+                currentTab: 1,
 
-                    resetHighlight(previewElement) {
-                        delete previewElement.dataset.highlighted;
-                    },
+                resetHighlight(previewElement) {
+                    delete previewElement.dataset.highlighted;
+                },
 
-                    previewCode() {
-                        const preview = document.querySelector('.language-php');
-                        const textArea = document.querySelector('#code');
+                previewCode() {
+                    const preview = document.querySelector('.language-php');
+                    const textArea = document.querySelector('#code');
 
-                        this.resetHighlight(preview);
+                    this.resetHighlight(preview);
 
-                        preview.innerHTML = textArea.value;
-                        hljs.highlightElement(preview);
-                    },
+                    preview.innerHTML = textArea.value;
+                    hljs.highlightElement(preview);
+                },
 
-                    showFirstTab() {
-                        this.currentTab = 1;
-                    },
+                showFirstTab() {
+                    this.currentTab = 1;
+                },
 
-                    showSecondTab() {
-                        this.currentTab = 2;
+                showSecondTab() {
+                    this.currentTab = 2;
 
-                        this.previewCode();
-                    }
-                }));
-            });
-
-            const parseToHeadingMarkdown = () => {
-                const textarea = document.getElementById('content');
-                const startSelection = textarea.selectionStart;
-                const endSelection = textarea.selectionEnd;
-                const textareaValue = textarea.value;
-
-                const selectedText = textareaValue.substring(startSelection, endSelection);
-                const parsedText = textareaValue.substring(0, startSelection) + '## ' + selectedText + textareaValue.substring(endSelection);
-
-                textarea.value = parsedText;
-                textarea.focus();
-            }
-
-            const parseToBoldMarkdown = () => {
-                const textarea = document.getElementById('content');
-                const startSelection = textarea.selectionStart;
-                const endSelection = textarea.selectionEnd;
-                const textareaValue = textarea.value;
-
-                const selectedText = textareaValue.substring(startSelection, endSelection);
-                const parsedText = textareaValue.substring(0, startSelection) + '**' + selectedText + '**' + textareaValue.substring(endSelection);
-
-                textarea.value = parsedText;
-                textarea.focus();
-            }
-
-            const parseToLinkMarkdown = () => {
-                const textarea = document.getElementById('content');
-                const startSelection = textarea.selectionStart;
-                const endSelection = textarea.selectionEnd;
-                const textareaValue = textarea.value;
-
-                const selectedText = textareaValue.substring(startSelection, endSelection);
-                const linkURL = prompt('Submit your link please.');
-
-                if (linkURL) {
-                    const parsedText = textareaValue.substring(0, startSelection) + '[' + selectedText + '](' + linkURL + ')' + textareaValue.substring(endSelection);
-                    textarea.value = parsedText;
+                    this.previewCode();
                 }
+            }));
+        });
 
-                textarea.focus();
+        const parseToHeadingMarkdown = () => {
+            const textarea = document.getElementById('content');
+            const startSelection = textarea.selectionStart;
+            const endSelection = textarea.selectionEnd;
+            const textareaValue = textarea.value;
+
+            const selectedText = textareaValue.substring(startSelection, endSelection);
+            const parsedText = textareaValue.substring(0, startSelection) + '## ' + selectedText + textareaValue.substring(endSelection);
+
+            textarea.value = parsedText;
+            textarea.focus();
+        }
+
+        const parseToBoldMarkdown = () => {
+            const textarea = document.getElementById('content');
+            const startSelection = textarea.selectionStart;
+            const endSelection = textarea.selectionEnd;
+            const textareaValue = textarea.value;
+
+            const selectedText = textareaValue.substring(startSelection, endSelection);
+            const parsedText = textareaValue.substring(0, startSelection) + '**' + selectedText + '**' + textareaValue.substring(endSelection);
+
+            textarea.value = parsedText;
+            textarea.focus();
+        }
+
+        const parseToItalicMarkdown = () => {
+            const textarea = document.getElementById('content');
+            const startSelection = textarea.selectionStart;
+            const endSelection = textarea.selectionEnd;
+            const textareaValue = textarea.value;
+
+            const selectedText = textareaValue.substring(startSelection, endSelection);
+            const parsedText = textareaValue.substring(0, startSelection) + '*' + selectedText + '*' + textareaValue.substring(endSelection);
+
+            textarea.value = parsedText;
+            textarea.focus();
+        }
+
+        const parseToLinkMarkdown = () => {
+            const textarea = document.getElementById('content');
+            const startSelection = textarea.selectionStart;
+            const endSelection = textarea.selectionEnd;
+            const textareaValue = textarea.value;
+
+            const selectedText = textareaValue.substring(startSelection, endSelection);
+            const linkURL = prompt('Submit your link please.');
+
+            if (linkURL) {
+                const parsedText = textareaValue.substring(0, startSelection) + '[' + selectedText + '](' + linkURL + ')' + textareaValue.substring(endSelection);
+                textarea.value = parsedText;
             }
 
-        </script>
+            textarea.focus();
+        }
+
+    </script>
     @endpush
 </x-app-layout>
