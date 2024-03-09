@@ -30,7 +30,7 @@
             <x-nudge-search :nudges=$nudges />
 
             <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
+            <div class="hidden sm:flex sm:items-center">
                 @auth
                 <a href="{{ route('dashboard') }}" type="button" class="relative mr-1 flex-shrink-0 rounded-full bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 cursor-pointer">
                     <span class="absolute -inset-1.5"></span>
