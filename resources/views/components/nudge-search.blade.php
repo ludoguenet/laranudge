@@ -55,8 +55,6 @@
             },
 
             selectNextNudge() {
-                console.log(this.selectedNudgeIndex);
-
                 if (this.filteredNudges.length === 0) return;
 
 
