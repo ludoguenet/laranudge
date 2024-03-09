@@ -1,4 +1,8 @@
 <x-app-layout>
+    <x-slot name="title">
+        {{ $nudge->title }}
+    </x-slot>
+
     <div class="px-6 py-24 sm:py-32 lg:px-8">
         <div class="mx-auto max-w-4xl">
             @if ($nudge)
