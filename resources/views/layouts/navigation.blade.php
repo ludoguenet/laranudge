@@ -26,6 +26,17 @@
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 @auth
+                <a href="{{ route('dashboard') }}" type="button" class="relative mr-1 flex-shrink-0 rounded-full bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 cursor-pointer">
+                    <span class="absolute -inset-1.5"></span>
+                    <span class="sr-only">View notifications</span>
+                    <svg class="size-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+                    </svg>
+
+                    @if ($notificationCount !== 0)
+                    <span class="absolute right-0 top-0 block h-2 w-2 rounded-full bg-green-400 ring-2 ring-white"></span>
+                    @endif
+                </a>
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
@@ -45,9 +56,9 @@
                         </x-dropdown-link>
 
                         @if(auth()->user()->isAdmin())
-                            <x-dropdown-link :href="route('admin.index')">
-                                {{ __('Admin Dashboard') }}
-                            </x-dropdown-link>
+                        <x-dropdown-link :href="route('admin.index')">
+                            {{ __('Admin Dashboard') }}
+                        </x-dropdown-link>
                         @endif
 
                         <!-- Authentication -->
@@ -96,9 +107,9 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
             @if(auth()->user()->isAdmin())
-                <x-responsive-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
-                    {{ __('Admin Dashboard') }}
-                </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
+                {{ __('Admin Dashboard') }}
+            </x-responsive-nav-link>
             @endif
             <x-responsive-nav-link :href="route('nudges.create')" :active="request()->routeIs('nudges.create')">
                 {{ __('Share your nudge!') }}
