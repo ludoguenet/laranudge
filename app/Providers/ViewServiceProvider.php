@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Models\Nudge;
 use App\Models\User;
 use Illuminate\Support\Facades;
 use Illuminate\Support\ServiceProvider;
@@ -27,7 +28,15 @@ class ViewServiceProvider extends ServiceProvider
             /** @var ?User $user */
             $user = auth()->user();
 
-            $view->with(['notificationCount' => (int) ($user ? $user->refresh()->unreadNotifications->count() : 0)]);
+            $nudges = Nudge::query()
+                ->with('user')
+                ->validated()
+                ->get();
+
+            $view->with([
+                'notificationCount' => (int) ($user ? $user->refresh()->unreadNotifications->count() : 0),
+                'nudges' => $nudges,
+            ]);
         });
     }
 }
