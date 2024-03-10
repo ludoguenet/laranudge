@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomePageController::class)->name('homepage');
 Route::get('feed', RSSFeedController::class)->name('rss.feed');
 
+Route::view('/privacy', 'privacy')->name('privacy');
+Route::view('/about', 'about')->name('about');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', DashBoardController::class)->name('dashboard');
-
-    Route::view('/privacy', 'privacy')->name('privacy');
-    Route::view('/about', 'about')->name('about');
 
     Route::prefix('nudges')
         ->as('nudges.')
