@@ -49,4 +49,11 @@ class UserFactory extends Factory
             'admin' => true,
         ]);
     }
+    
+    public function subscribedTwoMonthsAgo(): static
+    {
+        return $this->state(fn () => [
+            'created_at' => now()->subMonths(2),
+        ]);
+    }
 }

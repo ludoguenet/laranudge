@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Nudge;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -18,8 +19,19 @@ class IndexController extends Controller
             ->latest()
             ->get();
 
+        $subscribersCount = User::query()
+            ->whereNotNull('email_verified_at')
+            ->count();
+
+        $subscribersMonthlyCount = User::query()
+            ->whereNotNull('email_verified_at')
+            ->where('created_at', '>', now()->subMonth())
+            ->count();
+
         return view('admin.index', [
             'nudges' => $nudges,
+            'subscribersCount' => $subscribersCount,
+            'subscribersMonthlyCount' => $subscribersMonthlyCount,
         ]);
     }
 }

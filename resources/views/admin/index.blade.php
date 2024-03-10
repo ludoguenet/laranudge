@@ -1,19 +1,11 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Admin Dashboard') }}
-        </h2>
-    </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+
             <div class="px-4 sm:px-6 lg:px-8">
-                <div class="sm:flex sm:items-center">
-                    <div class="sm:flex-auto">
-                        <h1 class="text-base font-semibold leading-6 text-gray-900">Admin Dashboard</h1>
-                        <p class="mt-2 text-sm text-gray-700">A list of all members nudges and their status.</p>
-                    </div>
-                </div>
+                <x-admin-stats :subscribers-count=$subscribersCount :subscribers-monthly-count=$subscribersMonthlyCount />
+
                 @if($nudges->isNotEmpty())
                 <div class="mt-8 flow-root">
                     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
