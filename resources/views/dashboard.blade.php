@@ -52,7 +52,7 @@
                                                     </div>
                                                 </x-modal>
                                                 <div class="ml-4">
-                                                    <div class="text-gray-500" title="{{ $nudge->content }}">{{ Str::limit($nudge->title, 70) }}</div>
+                                                    <div class="text-gray-500">{{ Str::limit($nudge->title, 70) }}</div>
                                                 </div>
                                             </div>
                                         </td>

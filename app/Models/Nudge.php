@@ -68,4 +68,12 @@ class Nudge extends Model implements Likeable
     ): void {
         $query->where('validated', true);
     }
+
+    protected function getEscapedContentAttribute(): string
+    {
+        return Str::markdown($this->attributes['content'], [
+            'html_input' => 'escape',
+            'allow_unsafe_links' => false,
+        ]);
+    }
 }
