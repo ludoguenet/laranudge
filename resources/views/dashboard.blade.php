@@ -39,7 +39,7 @@
                                                         <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
                                                     </svg>
                                                 </div>
-                                                <x-modal name="nudge-preview-{{ $nudge->id }}" max-width="4xl" focusable>
+                                                <x-modal name="nudge-preview-{{ $nudge->id }}" max-width="4xl">
                                                     <div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
                                                         <div class="px-4 py-5 sm:px-6 text-gray-500">
                                                             You're currently viewing the code for your tip.
