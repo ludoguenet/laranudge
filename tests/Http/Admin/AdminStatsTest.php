@@ -10,7 +10,7 @@ it('can view subscribers count', function () {
     $user = User::factory()->admin()->create();
     User::factory()->create();
     User::factory()->subscribedTwoMonthsAgo()->create();
-    
+
     User::factory(2)->unverified()->create();
 
     actingAs($user)

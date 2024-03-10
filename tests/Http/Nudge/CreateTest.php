@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 use App\Models\Nudge;
 use App\Models\User;
-
 use Illuminate\Support\Str;
+
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\assertDatabaseCount;
 

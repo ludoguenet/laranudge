@@ -49,7 +49,7 @@ class UserFactory extends Factory
             'admin' => true,
         ]);
     }
-    
+
     public function subscribedTwoMonthsAgo(): static
     {
         return $this->state(fn () => [

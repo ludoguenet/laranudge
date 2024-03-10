@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use App\Models\User;
 use App\Models\Nudge;
-
+use App\Models\User;
 use Illuminate\Support\Str;
+
 use function Pest\Laravel\actingAs;
 
 it('can edit a nudge', function () {
