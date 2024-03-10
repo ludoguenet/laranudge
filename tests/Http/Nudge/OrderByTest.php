@@ -1,7 +1,5 @@
 <?php
 
-it('can search')->todo();
-
 it('can see nudges displayed and sorted properly', function () {
     // test('can see posts sorted by title', function (string $direction) {
     //     $posts = Post::factory(3)
