@@ -80,7 +80,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <textarea rows="7" name="content" id="content" class="block w-full rounded-md border-0 py-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6" placeholder="Your content goes here!">{{ old('content', $nudge ?? null) }}</textarea>
+                                <textarea rows="7" name="content" id="content" class="block w-full rounded-md border-0 py-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6" placeholder="Your content goes here!">{{ old('content', $nudge ?? null) }}</textarea>
                                 <x-input-error class="mt-2" :messages="$errors->get('content')" />
                             </div>
 
@@ -95,7 +95,7 @@
                                     <div x-show="currentTab === 1" id="tabs-1-panel-1" class="-m-0.5 rounded-lg p-0.5" aria-labelledby="tabs-1-tab-1" role="tabpanel" tabindex="0">
                                         <label for="code" class="sr-only">code</label>
                                         <div>
-                                            <textarea rows="7" name="code" id="code" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6" placeholder="Your PHP snippet goes here!">{{ old('code', $nudge ?? null) }}</textarea>
+                                            <textarea rows="7" name="code" id="code" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6" placeholder="Your PHP snippet goes here!">{{ old('code', $nudge ?? null) }}</textarea>
                                             <x-input-error class="mt-2" :messages="$errors->get('code')" />
                                         </div>
                                     </div>
