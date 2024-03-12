@@ -1,14 +1,14 @@
 <div x-data="{ open: false }" @click.outside="open = false" @close.stop="open = false" class="relative isolate z-50 shadow">
     <div class="bg-white py-5">
         <div class="flex items-center mx-auto max-w-7xl px-6 lg:px-8">
-            <button  @click="open = ! open" type="button" class="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-600" aria-expanded="false">
+            <a href="{{ route('homepage') }}">
                 <img src="{{ asset('images/laranudge.png') }}" alt="Laranudge logo" class="size-7" />
-            </button>
+            </a>
 
             <x-nudge-search :nudges=$nudges />
 
             @auth
-                <a href="{{ route('dashboard') }}" type="button" class="relative mr-1 flex-shrink-0 rounded-full bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 cursor-pointer">
+                <a href="{{ route('dashboard') }}" type="button" class="relative mr-2 flex-shrink-0 rounded-full bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 cursor-pointer">
                     <span class="absolute -inset-1.5"></span>
                     <span class="sr-only">View notifications</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -20,6 +20,12 @@
                     @endif
                 </a>
             @endauth
+
+            <button @click="open = ! open" type="button" class="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                </svg>
+            </button>
         </div>
     </div>
 
