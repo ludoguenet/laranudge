@@ -45,7 +45,7 @@ pre code.torchlight .summary-caret {
 /* width */
 ::-webkit-scrollbar {
     height: 5px;
-    width: 4px;
+    width: 6px;
 }
 
 /* Track */

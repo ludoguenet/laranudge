@@ -3,8 +3,10 @@
         {{ $nudge->title }}
     </x-slot>
 
-    <div class="px-6 py-24 sm:py-32 lg:px-8">
-        <div class="mx-auto max-w-4xl">
+    <div class="relative isolate overflow-hidden bg-gradient-to-b from-emerald-100/20">
+        <div class="absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] bg-white shadow-xl shadow-emerald-600/10 ring-1 ring-emerald-50 sm:-mr-80 lg:-mr-96" aria-hidden="true"></div>
+        <div class="mx-auto max-w-7xl px-6 py-32 sm:py-40 lg:px-8">
+            <div class="mx-auto max-w-4xl">
             @if ($nudge)
             <x-nudge :nudge=$nudge :random-synonym=$randomSynonym />
             @else
@@ -28,5 +30,7 @@
             </div>
             @endif
         </div>
+        </div>
+        <div class="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32"></div>
     </div>
 </x-app-layout>
