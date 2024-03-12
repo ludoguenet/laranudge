@@ -27,12 +27,12 @@
                             <div>
                                 <div class="-mt-px flex divide-x divide-gray-200">
                                     <div class="flex w-0 flex-1">
-                                        <a href="{{ route('nudges.show', $nudge) }}" class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
-                                            Take me there
+                                        <a href="{{ route('nudges.show', $nudge) }}" class="bg-green-50 hover:bg-gray-50 hover:text-emerald-600 relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900 transition duration-150 ease-in-out">
+                                            View the code
                                         </a>
                                     </div>
                                         <div class="-ml-px flex w-0 flex-1">
-                                            <span class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm text-gray-900">
+                                            <span class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm text-gray-600">
                                                 by {{ $nudge->user->name }}
                                             </span>
                                         </div>
