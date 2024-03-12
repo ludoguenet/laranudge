@@ -6,13 +6,13 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('homepage') }}">
-                        <img src="{{ asset('images/laranudge.png') }}" alt="Laranudge logo" class="h-8 block" />
+                        <img src="{{ asset('images/laranudge.png') }}" alt="Laranudge logo" class="h-8 sm:h-9 block" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 @auth
-                <div class="hidden space-x-4 sm:-my-px sm:ms-10 sm:flex">
+                <div class="hidden space-x-4 sm:-my-px sm:ms-6 sm:flex">
                     <x-nav-link :href="route('dashboard')" class="pt-0" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
