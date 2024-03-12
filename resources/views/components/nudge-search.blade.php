@@ -2,7 +2,7 @@
 'nudges',
 ])
 
-<div class="flex-1 px-4 flex items-center justify-center">
+<div @click="open = false" class="flex-1 px-4 flex items-center justify-center">
     <div x-data="dropdownSearch({{ Js::from($nudges) }})" x-init="$watch('query', () => selectedNudgeIndex=null)" class="relative w-full">
         <input x-model="query" x-ref="queryInput" x-on:click.outside="reset()" x-on:keyup.escape="reset()" x-on:keyup.down="selectNextNudge" x-on:keyup.up="selectPreviousNudge" x-on:keyup.enter="goToUrl()" placeholder="Search for nudges" id="combobox" type="text" class="w-full rounded-md border-0 bg-white py-1.5 pl-3 pr-8 text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-green-400 sm:text-sm sm:leading-6 placeholder-gray-400" role="combobox" aria-controls="options" aria-expanded="false">
         <a href="{{ route('rss.feed') }}" class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none pointer-cursor">

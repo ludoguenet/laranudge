@@ -34,6 +34,7 @@
     <div class="min-h-screen flex flex-col bg-white">
         @include('layouts.navigation')
 
+
         <main>
             {{ $slot }}
         </main>
