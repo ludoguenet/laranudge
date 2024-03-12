@@ -6,18 +6,18 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('homepage') }}">
-                        <img src="{{ asset('images/laranudge.png') }}" alt="Laranudge logo" class="block h-9 w-auto fill-current text-gray-800" />
+                        <img src="{{ asset('images/laranudge.png') }}" alt="Laranudge logo" class="h-8 block" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 @auth
                 <div class="hidden space-x-4 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('dashboard')" class="pt-0" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <a href="{{ route('nudges.create') }}" class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-green-700 transition duration-150 ease-in-out">
+                    <a href="{{ route('nudges.create') }}" class="inline-flex items-center px-1 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-green-700 transition duration-150 ease-in-out">
                         <button type="button" class="inline-flex items-center gap-x-1.5 rounded-md bg-green-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500">
                             New Nudge
                         </button>
