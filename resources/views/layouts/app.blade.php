@@ -26,6 +26,9 @@
     <meta property="twitter:description" content="Share your best tips about Laravel!" />
     <meta property="twitter:image" content="{{ asset('images/banner.jpg') }}" />
 
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for laranudge.com" href="{{ route('rss.feed') }}" />
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
@@ -33,7 +36,6 @@
 <body class="font-sans antialiased">
     <div class="min-h-screen flex flex-col bg-white">
         @include('layouts.navigation')
-
 
         <main>
             {{ $slot }}
