@@ -1,6 +1,6 @@
 <div x-data="{ open: false }" @click.outside="open = false" @close.stop="open = false" class="relative isolate z-50 shadow">
     <div class="bg-white py-5">
-        <div class="flex items-center mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="flex items-center mx-auto max-w-7xl gap-4 px-6 lg:px-8">
             <a href="{{ route('homepage') }}">
                 <img src="{{ asset('images/laranudge.png') }}" alt="Laranudge logo" class="size-7" />
             </a>
@@ -8,7 +8,7 @@
             <x-nudge-search :nudges=$nudges />
 
             @auth
-                <a href="{{ route('dashboard') }}" type="button" class="relative mr-2 flex-shrink-0 rounded-full bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 cursor-pointer">
+                <a href="{{ route('dashboard') }}" type="button" class="relative flex-shrink-0 rounded-full bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 cursor-pointer">
                     <span class="absolute -inset-1.5"></span>
                     <span class="sr-only">View notifications</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
