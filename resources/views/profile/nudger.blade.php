@@ -17,11 +17,11 @@
                         <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{{ $totalNudges }}</dd>
                     </div>
                     <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
-                        <dt class="truncate text-sm font-medium text-gray-500">Avg. nudges this month</dt>
+                        <dt class="truncate text-sm font-medium text-gray-500">Nudges created this month</dt>
                         <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{{ $monthlyNudges }}</dd>
                     </div>
                     <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
-                        <dt class="truncate text-sm font-medium text-gray-500">Liked nudges</dt>
+                        <dt class="truncate text-sm font-medium text-gray-500">Nudges liked</dt>
                         <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{{ $likedNudges }}</dd>
                     </div>
                 </dl>
