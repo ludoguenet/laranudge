@@ -51,7 +51,9 @@
 
     <figcaption>
         <div class="mt-4 flex items-center justify-center space-x-3 text-base">
-            <div class="font-semibold text-gray-900">{{ $nudge->user->name }}</div>
+            <div class="font-semibold text-gray-900">
+                <a href="{{ $nudge->user->nudgerLink() }}" class="hover:underline">{{ '@' . $nudge->user->name }}</a>
+            </div>
             <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" class="fill-gray-900">
                 <circle cx="1" cy="1" r="1" />
             </svg>

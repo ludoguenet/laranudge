@@ -99,6 +99,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->admin === true;
     }
 
+    public function nudgerLink(): string
+    {
+        return route('nudger', $this->name);
+    }
+
     public function sendEmailVerificationNotification(): void
     {
         $this->notify(new VerifyEmailQueued);

@@ -8,12 +8,14 @@ use App\Http\Controllers\Nudge\DestroyController;
 use App\Http\Controllers\Nudge\MostLikedNudgesController;
 use App\Http\Controllers\Nudge\ShowController;
 use App\Http\Controllers\Nudge\StoreController;
+use App\Http\Controllers\NudgerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RSSFeedController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomePageController::class)->name('homepage');
 Route::get('/most-liked-nudges', MostLikedNudgesController::class)->name('most-liked-nudges');
+Route::get('/@{user:name}', NudgerController::class)->name('nudger');
 Route::get('feed', RSSFeedController::class)->name('rss.feed');
 
 Route::view('/privacy', 'privacy')->name('privacy');
