@@ -4,7 +4,7 @@
     </x-slot>
 
     <div class="py-20">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-6 px-8">
 
             <div class="border-b border-gray-200 pb-5">
                 <h3 class="text-base font-semibold leading-6 text-gray-900">{{ $user->name }}</h3>
