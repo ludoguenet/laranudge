@@ -34,7 +34,7 @@
                                 <div class="flex items-end">
                                     <div>
                                         <x-input-label for="content" :value="__('Short description')" />
-                                        <p class="text-xs leading-6 text-gray-600">Markdow is accepted.</p>
+                                        <p class="text-xs leading-6 text-gray-600">Markdown is accepted.</p>
                                     </div>
                                     <div class="ml-auto flex items-center space-x-5">
                                         <div class="flex items-center">
