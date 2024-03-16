@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Alpine */
+[x-cloak] { display: none !important; }
+
 /*
  Margin and rounding are personal preferences,
  overflow-x-auto is recommended.
@@ -40,8 +43,6 @@ pre code.torchlight .summary-caret {
     @apply mr-4;
 }
 
-[x-cloak] { display: none !important; }
-
 /* width */
 ::-webkit-scrollbar {
     height: 5px;
@@ -64,3 +65,14 @@ pre code.torchlight .summary-caret {
 ::-webkit-scrollbar-thumb:hover {
     background: #94a3b8;
 }
+
+/* hover selection */
+::-moz-selection {/* Code for Firefox */
+    color: #ecfccb;
+    background: #4ade80;
+  }
+  
+  ::selection {
+    color: #ecfccb;
+    background: #4ade80;
+  }

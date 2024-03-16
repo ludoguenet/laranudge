@@ -70,10 +70,10 @@
                 </div>
                 <div>
                     <a href="{{ route('most-liked-nudges') }}" class="font-semibold text-gray-900">
-                        Most liked nudges
+                        Most loved nudges
                         <span class="absolute inset-0"></span>
                     </a>
-                    <p class="mt-1 text-gray-600">Your most-loved nudges</p>
+                    <p class="mt-1 text-gray-600">The most popular nudges</p>
                 </div>
             </div>
 
