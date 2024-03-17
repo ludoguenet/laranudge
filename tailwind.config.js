@@ -10,11 +10,12 @@ export default {
     ],
 
     safelist: [
-        'text-red-700',
+        'text-yellow-700',
         'text-green-700',
+        'text-blue-700',
         {
-            pattern: /bg-(red|green)-(50)/,
-            pattern: /ring-(red|green)-(600)/,
+            pattern: /bg-(yellow|green|blue)-(50)/,
+            pattern: /ring-(yellow|green|blue)-(600)/,
         },
     ],
 

@@ -30,13 +30,13 @@
                                             <span>{{ $nudge->user->name }}</span>
                                         </td>
                                         <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                                            <span class="inline-flex items-center rounded-md bg-{{ $nudge->validated() ? 'green' : 'red' }}-50 px-2 py-1 text-xs font-medium text-{{ $nudge->validated() ? 'green' : 'red' }}-700 ring-1 ring-inset ring-{{ $nudge->validated() ? 'green' : 'red' }}-600/20">{{ $nudge->validated() ? 'validated' : 'not validated yet' }}</span>
+                                            <span class="inline-flex items-center rounded-md bg-{{ $nudge->status->colour() }}-50 px-2 py-1 text-xs font-medium text-{{ $nudge->status->colour() }}-700 ring-1 ring-inset ring-{{ $nudge->status->colour() }}-600/20">{{ $nudge->status->label() }}</span>
                                         </td>
                                         <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">{{ $nudge->created_at->format('m/d/Y') }}</td>
                                         <td class="flex items-center space-x-5 relative whitespace-nowrap py-5 pl-3 pr-4 text-left text-sm font-medium sm:pr-0">
                                             <a href="{{ route('admin.nudges.edit', $nudge) }}">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 hover:cursor-pointer hover:text-gray-400 transition ease-in-out duration-300">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
                                                 </svg>
                                             </a>
                                             @include('nudges.partials.delete-nudge-form', ['nudgeId' => $nudge->id])

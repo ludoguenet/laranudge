@@ -75,6 +75,11 @@ class Nudge extends Model implements Likeable
         return $this->status === NudgeStatus::VALIDATED;
     }
 
+    public function draft(): bool
+    {
+        return $this->status === NudgeStatus::DRAFT;
+    }
+
     protected function getEscapedContentAttribute(): string
     {
         return Str::markdown($this->attributes['content'], [

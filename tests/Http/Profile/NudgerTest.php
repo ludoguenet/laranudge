@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Enums\Nudge\NudgeStatus;
 use App\Models\Nudge;
 use App\Models\User;
 
@@ -15,14 +16,14 @@ it('can show right counts in nudger profile', function () {
                     ['created_at' => now()],
                     ['created_at' => now()->subMonths(2)],
                 )
-                ->state(['validated' => true])
+                ->validated()
         )
         ->create();
 
     $nudges = Nudge::factory(6)
         ->sequence(
-            ['validated' => true],
-            ['validated' => false],
+            ['status' => NudgeStatus::VALIDATED],
+            ['status' => NudgeStatus::NOT_VALIDATED],
         )
         ->create();
 

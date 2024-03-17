@@ -14,7 +14,7 @@ class ShowController extends Controller
     public function __invoke(
         Nudge $nudge,
     ): View {
-        abort_if(! $nudge->validated, 404);
+        abort_unless($nudge->validated(), 404);
 
         $randomSynonym = (new GenerateRandomSynonym)->handle();
 

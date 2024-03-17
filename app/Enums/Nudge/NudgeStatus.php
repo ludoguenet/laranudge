@@ -6,7 +6,25 @@ namespace App\Enums\Nudge;
 
 enum NudgeStatus: string
 {
-    CASE NOT_VALIDATED = 'not_validated';
-    CASE DRAFT = 'draft';
-    CASE VALIDATED = 'validated';
+    case NOT_VALIDATED = 'not_validated';
+    case DRAFT = 'draft';
+    case VALIDATED = 'validated';
+
+    public function label(): string
+    {
+        return match ($this) {
+            self::NOT_VALIDATED => 'waiting for validation',
+            self::DRAFT => 'draft',
+            self::VALIDATED => 'validated',
+        };
+    }
+
+    public function colour(): string
+    {
+        return match ($this) {
+            self::NOT_VALIDATED => 'yellow',
+            self::DRAFT => 'blue',
+            self::VALIDATED => 'green',
+        };
+    }
 }

@@ -10,7 +10,7 @@
                     <section>
                         <header>
                             <h2 class="text-lg font-medium text-gray-900">
-                                {{ __('Form') }}
+                                {{ __('Edit Form') }}
                             </h2>
 
                             <p class="mt-1 text-sm text-gray-600">
@@ -19,12 +19,13 @@
                         </header>
 
 
-                        <form method="post" action="{{ route('nudges.store') }}" class="mt-6 space-y-6">
+                        <form method="post" action="{{ route(auth()->user()->isAdmin() ? 'admin.nudges.update' : 'nudges.update', $nudge) }}" class="mt-6 space-y-6">
                             @csrf
+                            @method('PUT')
 
                             <div>
                                 <x-input-label for="title" :value="__('Title')" />
-                                <x-text-input id="title" name="title" type="text" class="mt-1 block w-full placeholder:text-gray-400 sm:text-sm" :value="old('title')" autofocus autocomplete="title" required placeholder="Your title goes here!" />
+                                <x-text-input id="title" name="title" type="text" class="mt-1 block w-full placeholder:text-gray-400 sm:text-sm" :value="old('title', $nudge->title)" autofocus autocomplete="title" required placeholder="Your title goes here!" />
                                 <x-input-error class="mt-2" :messages="$errors->get('title')" />
                             </div>
 
@@ -72,7 +73,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <textarea rows="7" name="content" id="content" class="block w-full rounded-md border-0 py-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6" placeholder="Your content goes here!">{{ old('content') }}</textarea>
+                                <textarea rows="7" name="content" id="content" class="block w-full rounded-md border-0 py-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6" placeholder="Your content goes here!">{{ old('content', $nudge->content) }}</textarea>
                                 <x-input-error class="mt-2" :messages="$errors->get('content')" />
                             </div>
 
@@ -87,7 +88,7 @@
                                     <div x-show="currentTab === 1" id="tabs-1-panel-1" class="-m-0.5 rounded-lg p-0.5" aria-labelledby="tabs-1-tab-1" role="tabpanel" tabindex="0">
                                         <label for="code" class="sr-only">code</label>
                                         <div>
-                                            <textarea rows="7" name="code" id="code" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6" placeholder="Your PHP snippet goes here!">{{ old('code') }}</textarea>
+                                            <textarea rows="7" name="code" id="code" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6" placeholder="Your PHP snippet goes here!">{{ old('code', $nudge->code) }}</textarea>
                                             <x-input-error class="mt-2" :messages="$errors->get('code')" />
                                         </div>
                                     </div>
@@ -106,7 +107,7 @@
                                 <div class="space-y-5">
                                     <div class="relative flex items-start">
                                         <div class="flex h-6 items-center">
-                                            <input id="draft" aria-describedby="draft-description" name="draft" value="1" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-green-500 focus:ring-green-500" @checked(old('draft'))>
+                                            <input id="draft" aria-describedby="draft-description" name="draft" value="1" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-green-500 focus:ring-green-500" @checked(old('draft', $nudge->draft()))>
                                         </div>
                                         <div class="ml-3 text-sm leading-6">
                                             <label for="draft" class="font-medium text-gray-900">Draft</label>
@@ -117,16 +118,11 @@
                             </fieldset>
 
                             <div class="flex items-center gap-4">
-                                <x-primary-button>{{ __('Submit') }}</x-primary-button>
+                                <x-primary-button>{{ __('Edit') }}</x-primary-button>
 
-                                @if (session('status') === 'nudge-created')
-                                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 4000)" class="text-sm text-gray-600">{{ __('Nudge submitted! It will be available publicly after validation.') }}</p>
+                                @if (session('status') === 'nudge-edited')
+                                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 4000)" class="text-sm text-gray-600">{{ __('Draft edited!') }}</p>
                                 @endif
-
-                                @if (session('status') === 'nudge-draft')
-                                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 4000)" class="text-sm text-gray-600">{{ __('Your nudge has been placed in drafts.') }}</p>
-                                @endif
-
                             </div>
                         </form>
                     </section>

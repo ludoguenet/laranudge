@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\Nudge\NudgeStatus;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -26,8 +27,21 @@ class NudgeFactory extends Factory
             'slug' => $slug,
             'content' => Str::random(),
             'code' => Str::random(),
-            'validated' => false,
             'user_id' => User::factory(),
         ];
+    }
+
+    public function validated(): static
+    {
+        return $this->state(fn () => [
+            'status' => NudgeStatus::VALIDATED,
+        ]);
+    }
+
+    public function notValidated(): static
+    {
+        return $this->state(fn () => [
+            'status' => NudgeStatus::NOT_VALIDATED,
+        ]);
     }
 }

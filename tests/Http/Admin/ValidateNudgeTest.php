@@ -9,22 +9,22 @@ use function Pest\Laravel\actingAs;
 
 it('can validate nudges', function () {
     $user = User::factory()->admin()->create();
-    $nudge = Nudge::factory()->create();
+    $nudge = Nudge::factory()->notValidated()->create();
 
     actingAs($user)
         ->put(route('api.admin.nudges.validate', $nudge))
         ->assertNoContent();
 
-    expect($nudge->refresh()->validated)->toBeTrue();
+    expect($nudge->refresh()->validated())->toBeTrue();
 });
 
 it('can not validate nudges', function () {
     $user = User::factory()->create();
-    $nudge = Nudge::factory()->create();
+    $nudge = Nudge::factory()->notValidated()->create();
 
     actingAs($user)
         ->put(route('api.admin.nudges.validate', $nudge))
         ->assertRedirect();
 
-    expect($nudge->refresh()->validated)->toBeFalse();
+    expect($nudge->refresh()->validated())->toBeFalse();
 });

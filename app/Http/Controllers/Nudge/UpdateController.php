@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Admin\Nudge;
+namespace App\Http\Controllers\Nudge;
 
 use App\Enums\Nudge\NudgeStatus;
 use App\Http\Controllers\Controller;
@@ -27,6 +27,10 @@ class UpdateController extends Controller
             'status' => $status,
         ]);
 
-        return redirect()->route('admin.index');
+        if ($status === NudgeStatus::NOT_VALIDATED) {
+            return redirect()->route('dashboard')->with('info', 'Nudge submitted! It will be available publicly after validation.');
+        }
+
+        return redirect()->back()->with('status', 'nudge-edited');
     }
 }

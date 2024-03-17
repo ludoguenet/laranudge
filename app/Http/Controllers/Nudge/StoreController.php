@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Nudge\StoreRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class StoreController extends Controller
 {
@@ -30,6 +29,10 @@ class StoreController extends Controller
             'status' => $status,
         ]);
 
-        return redirect()->back()->with('status', 'nudge-created');
+        if ($status === NudgeStatus::NOT_VALIDATED) {
+            return redirect()->back()->with('status', 'nudge-created');
+        }
+
+        return redirect()->back()->with('status', 'nudge-draft');
     }
 }
