@@ -1,6 +1,7 @@
 @props([
 'nudge',
 'randomSynonym',
+'preview' => false,
 ])
 
 <div x-data="nudge({{ Js::from(auth()->user()?->isLiked($nudge)) }})">
@@ -15,6 +16,7 @@
         <x-torchlight-code language='php'>{!! $nudge->code !!}</x-torchlight-code>
     </pre>
 
+    @if ($preview === false)
     <div class="flex items-center justify-between">
         <div class="flex items-center justify-center gap-1">
             <div x-ref="likesCount" class="text-gray-400 text-sm">{{ $nudge->likes_count }}</div>
@@ -48,6 +50,7 @@
             </svg>
         </div>
     </div>
+    @endif
 
     <figcaption>
         <div class="mt-4 flex items-center justify-center space-x-3 text-base">

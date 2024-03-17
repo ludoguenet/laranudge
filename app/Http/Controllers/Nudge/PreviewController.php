@@ -7,21 +7,25 @@ namespace App\Http\Controllers\Nudge;
 use App\Actions\Nudge\GenerateRandomSynonym;
 use App\Http\Controllers\Controller;
 use App\Models\Nudge;
-use Illuminate\Contracts\View\View;
+use App\Models\User;
+use Illuminate\View\View;
 
-class ShowController extends Controller
+class PreviewController extends Controller
 {
     public function __invoke(
         Nudge $nudge,
     ): View {
-        abort_if(! $nudge->validated, 404);
+        /** @var User $user */
+        $user = auth()->user();
+
+        abort_unless($user->isAdmin() || auth()->id() === $nudge->user_id, 404);
 
         $randomSynonym = (new GenerateRandomSynonym)->handle();
 
         return view('nudges.show', [
             'nudge' => $nudge->loadCount('likes'),
             'randomSynonym' => $randomSynonym,
-            'preview' => false,
+            'preview' => true,
         ]);
     }
 }

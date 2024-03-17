@@ -32,24 +32,13 @@
                                         </td>
                                         <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">{{ $nudge->created_at->format('m/d/Y') }}</td>
                                         <td class="flex items-center gap-2 relative whitespace-nowrap py-5 pl-3 pr-4 text-left text-sm font-medium sm:pr-0">
-                                            <div x-data="" x-on:click.prevent="$dispatch('open-modal', 'nudge-preview-{{ $nudge->id }}')" class="flex-shrink-0">
+                                            <a href="{{ route('nudges.preview', $nudge->slug) }}" class="flex-shrink-0">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="size-4 hover:cursor-pointer hover:text-gray-400 transition ease-in-out duration-300">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z" />
                                                 </svg>
 
-                                            </div>
-                                            <x-modal name="nudge-preview-{{ $nudge->id }}" max-width="4xl">
-                                                <div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
-                                                    <div class="px-4 py-5 sm:px-6 text-gray-500">
-                                                        You're currently viewing the code for your tip.
-                                                    </div>
-                                                    <div class="px-4 py-5 sm:p-6">
-                                                        <pre>
-                                                            <x-torchlight-code language='php'>{!! $nudge->code !!}</x-torchlight-code>
-                                                        </pre>
-                                                    </div>
-                                                </div>
-                                            </x-modal>
+                                            </a>
+
                                             @include('nudges.partials.delete-nudge-form', ['nudgeId' => $nudge->id])
                                         </td>
                                     </tr>

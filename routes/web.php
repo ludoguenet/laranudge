@@ -6,6 +6,7 @@ use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\Nudge\DestroyController;
 use App\Http\Controllers\Nudge\MostLikedNudgesController;
+use App\Http\Controllers\Nudge\PreviewController;
 use App\Http\Controllers\Nudge\ShowController;
 use App\Http\Controllers\Nudge\StoreController;
 use App\Http\Controllers\NudgerController;
@@ -28,6 +29,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->as('nudges.')
         ->group(function () {
             Route::view('/create', 'nudges.create')->name('create');
+            Route::get('/preview/{nudge:slug}', PreviewController::class)->name('preview');
             Route::post('/', StoreController::class)->name('store');
             Route::delete('/{nudge}', DestroyController::class)->name('destroy');
         });
