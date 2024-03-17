@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Nudge;
 
+use App\Enums\Nudge\NudgeStatus;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Nudge\StoreRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,13 +14,11 @@ use Illuminate\Http\Request;
 class StoreController extends Controller
 {
     public function __invoke(
-        Request $request,
+        StoreRequest $request,
     ): RedirectResponse {
-        $validated = $request->validate([
-            'title' => 'required|unique:nudges|min:3|max:100',
-            'content' => 'required|string|min:10|max:500',
-            'code' => 'required|string',
-        ]);
+        $validated = $request->validated();
+
+        $status = $validated['draft'] === true ? NudgeStatus::DRAFT : NudgeStatus::NOT_VALIDATED;
 
         /** @var User $user */
         $user = auth()->user();
@@ -27,6 +27,7 @@ class StoreController extends Controller
             'title' => $validated['title'],
             'content' => $validated['content'],
             'code' => $validated['code'],
+            'status' => $status,
         ]);
 
         return redirect()->back()->with('status', 'nudge-created');

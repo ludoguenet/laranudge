@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Concerns\HasLikes;
 use App\Contracts\Likeable;
+use App\Enums\Nudge\NudgeStatus;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -22,7 +23,7 @@ class Nudge extends Model implements Likeable
         'slug',
         'content',
         'code',
-        'validated',
+        'status',
         'user_id',
     ];
 
@@ -32,7 +33,7 @@ class Nudge extends Model implements Likeable
      * @var array<string, string>
      */
     protected $casts = [
-        'validated' => 'boolean',
+        'status' => NudgeStatus::class,
     ];
 
     public static function boot(): void
@@ -66,7 +67,12 @@ class Nudge extends Model implements Likeable
     public function scopeValidated(
         Builder $query,
     ): void {
-        $query->where('validated', true);
+        $query->where('status', NudgeStatus::VALIDATED);
+    }
+
+    public function validated(): bool
+    {
+        return $this->status === NudgeStatus::VALIDATED;
     }
 
     protected function getEscapedContentAttribute(): string

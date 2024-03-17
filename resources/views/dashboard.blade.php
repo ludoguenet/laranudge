@@ -28,7 +28,7 @@
                                             <div class="text-gray-500">{{ Str::limit($nudge->title, 70) }}</div>
                                         </td>
                                         <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                                            <span class="inline-flex items-center rounded-md bg-{{ $nudge->validated === true ? 'green' : 'red' }}-50 px-2 py-1 text-xs font-medium text-{{ $nudge->validated === true ? 'green' : 'red' }}-700 ring-1 ring-inset ring-{{ $nudge->validated === true ? 'green' : 'red' }}-600/20">{{ $nudge->validated === true ? 'validated' : 'not validated yet' }}</span>
+                                            <span class="inline-flex items-center rounded-md bg-{{ $nudge->validated() ? 'green' : 'red' }}-50 px-2 py-1 text-xs font-medium text-{{ $nudge->validated() ? 'green' : 'red' }}-700 ring-1 ring-inset ring-{{ $nudge->validated() ? 'green' : 'red' }}-600/20">{{ $nudge->status->name }}</span>
                                         </td>
                                         <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">{{ $nudge->created_at->format('m/d/Y') }}</td>
                                         <td class="flex items-center gap-2 relative whitespace-nowrap py-5 pl-3 pr-4 text-left text-sm font-medium sm:pr-0">

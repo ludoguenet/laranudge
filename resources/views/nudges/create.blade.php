@@ -103,6 +103,21 @@
                                 </div>
                             </div>
 
+                            <fieldset>
+                                <legend class="sr-only">Draft</legend>
+                                <div class="space-y-5">
+                                    <div class="relative flex items-start">
+                                        <div class="flex h-6 items-center">
+                                            <input id="draft" aria-describedby="draft-description" name="draft" value="1" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-green-500 focus:ring-green-500">
+                                        </div>
+                                        <div class="ml-3 text-sm leading-6">
+                                            <label for="draft" class="font-medium text-gray-900">Draft</label>
+                                            <p id="draft-description" class="text-gray-500">You can always edit it before submitting it for validation</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+
                             <div class="flex items-center gap-4">
                                 <x-primary-button>{{ __('Submit') }}</x-primary-button>
 

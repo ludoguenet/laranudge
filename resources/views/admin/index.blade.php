@@ -30,7 +30,7 @@
                                             <span>{{ $nudge->user->name }}</span>
                                         </td>
                                         <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                                            <span class="inline-flex items-center rounded-md bg-{{ $nudge->validated === true ? 'green' : 'red' }}-50 px-2 py-1 text-xs font-medium text-{{ $nudge->validated === true ? 'green' : 'red' }}-700 ring-1 ring-inset ring-{{ $nudge->validated === true ? 'green' : 'red' }}-600/20">{{ $nudge->validated === true ? 'validated' : 'not validated' }}</span>
+                                            <span class="inline-flex items-center rounded-md bg-{{ $nudge->validated() ? 'green' : 'red' }}-50 px-2 py-1 text-xs font-medium text-{{ $nudge->validated() ? 'green' : 'red' }}-700 ring-1 ring-inset ring-{{ $nudge->validated() ? 'green' : 'red' }}-600/20">{{ $nudge->validated() ? 'validated' : 'not validated yet' }}</span>
                                         </td>
                                         <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">{{ $nudge->created_at->format('m/d/Y') }}</td>
                                         <td class="flex items-center space-x-5 relative whitespace-nowrap py-5 pl-3 pr-4 text-left text-sm font-medium sm:pr-0">
@@ -41,7 +41,7 @@
                                             </a>
                                             @include('nudges.partials.delete-nudge-form', ['nudgeId' => $nudge->id])
                                             <!-- Enabled: "bg-green-500", Not Enabled: "bg-gray-200" -->
-                                            <button x-data="toggles({{ $nudge->validated }})" @click="toggle({{ $nudge->id }})" type="button" :class="isToggled ? 'bg-green-500' : 'bg-gray-200'" class="relative inline-flex h-3 w-5 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2" role="switch" aria-checked="false">
+                                            <button x-data="toggles({{ $nudge->validated() }})" @click="toggle({{ $nudge->id }})" type="button" :class="isToggled ? 'bg-green-500' : 'bg-gray-200'" class="relative inline-flex h-3 w-5 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2" role="switch" aria-checked="false">
                                                 <span class="sr-only">Use setting</span>
                                                 <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
                                                 <span aria-hidden="true" :class="isToggled ? 'translate-x-2' : 'translate-x-0'" class="pointer-events-none inline-block size-2 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
