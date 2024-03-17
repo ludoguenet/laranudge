@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Enums\Nudge\NudgeStatus;
+use App\Models\Nudge;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -43,5 +44,16 @@ class NudgeFactory extends Factory
         return $this->state(fn () => [
             'status' => NudgeStatus::NOT_VALIDATED,
         ]);
+    }
+
+    public function liked(
+        int $likedCount = 1
+    ): Factory {
+        return $this->state(fn () => [])
+            ->afterCreating(function (Nudge $nudge) use ($likedCount) {
+                User::factory($likedCount)
+                    ->create()
+                    ->each(fn (User $user) => $user->like($nudge));
+            });
     }
 }
