@@ -39,6 +39,13 @@ class NudgeFactory extends Factory
         ]);
     }
 
+    public function draft(): static
+    {
+        return $this->state(fn () => [
+            'status' => NudgeStatus::DRAFT,
+        ]);
+    }
+
     public function notValidated(): static
     {
         return $this->state(fn () => [

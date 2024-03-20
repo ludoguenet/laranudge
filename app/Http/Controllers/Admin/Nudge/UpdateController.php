@@ -18,7 +18,7 @@ class UpdateController extends Controller
     ): RedirectResponse {
         $validated = $request->validated();
 
-        $status = $validated['draft'] === true ? NudgeStatus::DRAFT : NudgeStatus::NOT_VALIDATED;
+        $status = $validated['draft'] === true ? NudgeStatus::DRAFT : $nudge->status;
 
         $nudge->update([
             'title' => $validated['title'],

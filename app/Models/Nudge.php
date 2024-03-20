@@ -78,6 +78,11 @@ class Nudge extends Model implements Likeable
         return $this->status === NudgeStatus::VALIDATED;
     }
 
+    public function notValidated(): bool
+    {
+        return $this->status === NudgeStatus::NOT_VALIDATED;
+    }
+
     public function draft(): bool
     {
         return $this->status === NudgeStatus::DRAFT;
