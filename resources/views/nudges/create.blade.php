@@ -106,7 +106,7 @@
                                 <div class="space-y-5">
                                     <div class="relative flex items-start">
                                         <div class="flex h-6 items-center">
-                                            <input id="draft" aria-describedby="draft-description" name="draft" value="1" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-green-500 focus:ring-green-500" @checked(old('draft'))>
+                                            <input id="draft" aria-describedby="draft-description" name="draft" value="1" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-green-600 shadow-sm focus:ring-green-500" @checked(old('draft'))>
                                         </div>
                                         <div class="ml-3 text-sm leading-6">
                                             <label for="draft" class="font-medium text-gray-900">Draft</label>
