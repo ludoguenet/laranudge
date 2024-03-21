@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\assertDatabaseCount;
 
-it('can update a nudge in drafts', function (bool $draft) {
+it('can update a nudge in drafts', function (bool $draft): void {
     $user = User::factory()->create();
     $nudge = Nudge::factory()
         ->for($user)

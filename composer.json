@@ -22,6 +22,7 @@
         "nunomaduro/collision": "^7.0",
         "pestphp/pest": "^2.0",
         "pestphp/pest-plugin-laravel": "^2.0",
+        "rector/rector": "^1.0",
         "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
@@ -50,6 +51,9 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ],
+        "rector": [
+            "@php ./vendor/bin/rector process --clear-cache --dry-run"
+        ],
         "stan": [
             "@php ./vendor/bin/phpstan analyse"
         ],
@@ -60,6 +64,7 @@
             "@php ./vendor/bin/pest"
         ],
         "qa": [
+            "@php ./vendor/bin/rector process --clear-cache --dry-run",
             "@php ./vendor/bin/phpstan analyse",
             "@php ./vendor/bin/pint",
             "@php ./vendor/bin/pest"

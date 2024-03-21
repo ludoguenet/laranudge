@@ -6,7 +6,7 @@ use App\Models\User;
 
 use function Pest\Laravel\actingAs;
 
-it('can view subscribers count', function () {
+it('can view subscribers count', function (): void {
     $user = User::factory()->admin()->create();
     User::factory()->create();
     User::factory()->subscribedTwoMonthsAgo()->create();

@@ -8,7 +8,7 @@ use App\Models\User;
 
 use function Pest\Laravel\assertDatabaseCount;
 
-it('can like nudges', function () {
+it('can like nudges', function (): void {
     $nudge = Nudge::factory()->create();
     $user = User::factory()->create();
 
@@ -24,7 +24,7 @@ it('can like nudges', function () {
     expect($like->likeable_type)->toBe(get_class($nudge));
 });
 
-it('can unlike nudges', function () {
+it('can unlike nudges', function (): void {
     $nudge = Nudge::factory()->create();
     $user = User::factory()->create();
 
@@ -34,7 +34,7 @@ it('can unlike nudges', function () {
     assertDatabaseCount('likes', 0);
 });
 
-it('can determine if liked', function () {
+it('can determine if liked', function (): void {
     $nudge = Nudge::factory()->create();
     $user = User::factory()->create();
 
@@ -43,7 +43,7 @@ it('can determine if liked', function () {
     expect($user->isLiked($nudge))->toBeTrue();
 });
 
-it('can determine if not liked', function () {
+it('can determine if not liked', function (): void {
     $nudge = Nudge::factory()->create();
     $user = User::factory()->create();
 

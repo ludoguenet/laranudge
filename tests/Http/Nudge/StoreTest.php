@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\assertDatabaseCount;
 
-it('can store a nudge', function () {
+it('can store a nudge', function (): void {
     $user = User::factory()->create();
 
     $title = Str::random();
@@ -38,7 +38,7 @@ it('can store a nudge', function () {
     expect($nudge->user_id)->toBe($user->id);
 });
 
-it('can not store a nudge', function () {
+it('can not store a nudge', function (): void {
     $user = User::factory()->create();
 
     actingAs($user)

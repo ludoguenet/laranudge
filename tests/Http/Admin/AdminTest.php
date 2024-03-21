@@ -6,7 +6,7 @@ use App\Models\User;
 
 use function Pest\Laravel\actingAs;
 
-it('can access admin', function () {
+it('can access admin', function (): void {
     $user = User::factory()->admin()->create();
 
     actingAs($user)
@@ -14,7 +14,7 @@ it('can access admin', function () {
         ->assertOk();
 });
 
-it('can not access admin', function () {
+it('can not access admin', function (): void {
     $user = User::factory()->create();
 
     actingAs($user)

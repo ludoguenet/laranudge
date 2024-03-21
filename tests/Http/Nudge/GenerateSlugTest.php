@@ -6,7 +6,7 @@ use App\Models\Nudge;
 use App\Models\User;
 use Illuminate\Support\Str;
 
-it('generates slug when nudge is created', function () {
+it('generates slug when nudge is created', function (): void {
     $nudge = new Nudge([
         'title' => 'Hello World',
         'content' => Str::random(),
@@ -21,7 +21,7 @@ it('generates slug when nudge is created', function () {
     expect($nudge->slug)->toBe('hello-world');
 });
 
-it('generates slug when nudge is updated', function () {
+it('generates slug when nudge is updated', function (): void {
     $nudge = new Nudge([
         'title' => 'Hello World',
         'content' => Str::random(),

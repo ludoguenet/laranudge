@@ -7,7 +7,7 @@ use App\Models\User;
 
 use function Pest\Laravel\actingAs;
 
-it('can preview as admin', function () {
+it('can preview as admin', function (): void {
     $admin = User::factory()->admin()->create();
     $nudge = Nudge::factory()->create();
 
@@ -16,7 +16,7 @@ it('can preview as admin', function () {
         ->assertOk();
 });
 
-it('can preview as nudge author', function () {
+it('can preview as nudge author', function (): void {
     $nudge = Nudge::factory()->create();
 
     actingAs($nudge->user)
@@ -24,7 +24,7 @@ it('can preview as nudge author', function () {
         ->assertOk();
 });
 
-it('can not preview nudge', function () {
+it('can not preview nudge', function (): void {
     $nudge = Nudge::factory()->create();
 
     actingAs(User::factory()->create())

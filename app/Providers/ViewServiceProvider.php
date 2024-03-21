@@ -18,13 +18,13 @@ class ViewServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        Facades\View::composer('dashboard', function ($view) {
+        Facades\View::composer('dashboard', function ($view): void {
             /** @var User $user */
             $user = auth()->user();
             $user->unreadNotifications->markAsRead();
         });
 
-        Facades\View::composer('layouts.navigation', function ($view) {
+        Facades\View::composer('layouts.navigation', function ($view): void {
             /** @var ?User $user */
             $user = auth()->user();
 

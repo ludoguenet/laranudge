@@ -9,7 +9,7 @@ Route::get('/', IndexController::class)->name('index');
 
 Route::prefix('nudges')
     ->as('nudges.')
-    ->group(function () {
+    ->group(function (): void {
         Route::get('/edit/{nudge}', EditController::class)->name('edit');
         Route::put('{nudge}', UpdateController::class)->name('update');
     });

@@ -4,7 +4,7 @@ use App\Models\Nudge;
 
 use function Pest\Laravel\get;
 
-it('can display the most liked nudges', function () {
+it('can display the most liked nudges', function (): void {
     $most = Nudge::factory()->validated()->liked(10)->create(['title' => 'mostLikedNudges']);
     $less = Nudge::factory()->validated()->liked(5)->create(['title' => 'lessLikedNudge']);
     $not = Nudge::factory()->validated()->create(['title' => 'notLikedNudge']);

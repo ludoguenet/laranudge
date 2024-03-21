@@ -8,7 +8,7 @@ use App\Models\User;
 
 use function Pest\Laravel\get;
 
-it('can show right counts in nudger profile', function () {
+it('can show right counts in nudger profile', function (): void {
     $user = User::factory()
         ->has(
             Nudge::factory(4)

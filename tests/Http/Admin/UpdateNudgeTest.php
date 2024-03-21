@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 
 use function Pest\Laravel\actingAs;
 
-it('can update a nudge', function () {
+it('can update a nudge', function (): void {
     $admin = User::factory()->admin()->create();
     $nudge = Nudge::factory()->create();
 
@@ -34,7 +34,7 @@ it('can update a nudge', function () {
     expect($nudge->code)->toBe($code);
 });
 
-it('can not update a nudge', function () {
+it('can not update a nudge', function (): void {
     $admin = User::factory()->admin()->create();
     $nudge = Nudge::factory()->create();
 
@@ -44,7 +44,7 @@ it('can not update a nudge', function () {
         ->assertSessionHasErrors();
 });
 
-it('can update a nudge in drafts', function (NudgeStatus $status, bool $draft) {
+it('can update a nudge in drafts', function (NudgeStatus $status, bool $draft): void {
     $admin = User::factory()->admin()->create();
     $nudge = Nudge::factory()->create(['status' => $status]);
 
@@ -70,11 +70,14 @@ it('can update a nudge in drafts', function (NudgeStatus $status, bool $draft) {
     expect($nudge->code)->toBe($code);
 
     if ($draft === true) {
-        $nudge->status === NudgeStatus::DRAFT;
+        expect($nudge->status)->toBe(NudgeStatus::DRAFT);
     } else {
-        $nudge->status === $status;
+        expect($nudge->status)->toBe($status);
     }
-
 })
-    ->with(NudgeStatus::cases())
-    ->with([true, false]);
+    ->with([
+        'not validated status' => NudgeStatus::NOT_VALIDATED,
+        'draft status' => NudgeStatus::DRAFT,
+        'validated status' => NudgeStatus::VALIDATED,
+    ])
+    ->with(['with draft' => true, 'without draft' => false]);

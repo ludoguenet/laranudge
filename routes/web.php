@@ -24,12 +24,12 @@ Route::get('feed', RSSFeedController::class)->name('rss.feed');
 Route::view('/privacy', 'privacy')->name('privacy');
 Route::view('/about', 'about')->name('about');
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function (): void {
     Route::get('/dashboard', DashBoardController::class)->name('dashboard');
 
     Route::prefix('nudges')
         ->as('nudges.')
-        ->group(function () {
+        ->group(function (): void {
             Route::view('/create', 'nudges.create')->name('create');
             Route::get('/preview/{nudge:slug}', PreviewController::class)->name('preview');
             Route::post('/', StoreController::class)->name('store');
@@ -45,7 +45,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::prefix('nudges')
     ->as('nudges.')
-    ->group(function () {
+    ->group(function (): void {
         Route::get('/{nudge:slug}', ShowController::class)->name('show');
     });
 
