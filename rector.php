@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use Rector\Config\RectorConfig;
-use Rector\CodeQuality\Rector\FuncCall\IntvalToTypeCastRector;
-use Rector\CodeQuality\Rector\FuncCall\StrvalToTypeCastRector;
 use Rector\CodeQuality\Rector\FuncCall\BoolvalToTypeCastRector;
 use Rector\CodeQuality\Rector\FuncCall\FloatvalToTypeCastRector;
+use Rector\CodeQuality\Rector\FuncCall\IntvalToTypeCastRector;
+use Rector\CodeQuality\Rector\FuncCall\StrvalToTypeCastRector;
+use Rector\Config\RectorConfig;
 use Rector\TypeDeclaration\Rector\ClassMethod\AddVoidReturnTypeWhereNoReturnRector;
 
 return RectorConfig::configure()
