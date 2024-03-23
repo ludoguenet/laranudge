@@ -12,12 +12,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory()->create([
-            'name' => 'Laravel Jutsu',
-            'email' => 'd45h83@gmail.com',
-            'admin' => true,
-        ]);
-        $this->call(NudgesTableSeeder::class);
-        $this->call(LikesTableSeeder::class);
+        //
     }
 }
