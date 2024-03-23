@@ -95,7 +95,7 @@ Route::get('/auth/{provider}/callback', function (string $provider) {
 
     return redirect()->route('dashboard');
 })
-        ->where('provider', 'github|google')
-        ->name('auth-provider-callback');
+    ->where('provider', 'github|google')
+    ->name('auth-provider-callback');
 
 require __DIR__.'/auth.php';

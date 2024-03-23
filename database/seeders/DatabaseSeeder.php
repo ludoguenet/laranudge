@@ -17,5 +17,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'd45h83@gmail.com',
             'admin' => true,
         ]);
+        $this->call(NudgesTableSeeder::class);
+        $this->call(LikesTableSeeder::class);
     }
 }
