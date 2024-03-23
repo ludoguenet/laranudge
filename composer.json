@@ -56,7 +56,7 @@
         "rector": [
             "@php ./vendor/bin/rector process --clear-cache --dry-run"
         ],
-        "stan": [
+        "phpstan": [
             "@php ./vendor/bin/phpstan analyse"
         ],
         "pint": [
@@ -66,10 +66,10 @@
             "@php ./vendor/bin/pest"
         ],
         "qa": [
-            "@php ./vendor/bin/rector process --clear-cache --dry-run",
-            "@php ./vendor/bin/phpstan analyse",
-            "@php ./vendor/bin/pint",
-            "@php ./vendor/bin/pest"
+            "@php rector",
+            "@php phpstan",
+            "@php pint",
+            "@php pest"
         ]
     },
     "extra": {
