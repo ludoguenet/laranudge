@@ -14,11 +14,9 @@ use App\Http\Controllers\Nudge\UpdateController;
 use App\Http\Controllers\NudgerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RSSFeedController;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Socialite\CallbackController;
+use App\Http\Controllers\Socialite\RedirectController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Validator;
-use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/', HomePageController::class)->name('homepage');
 Route::get('/most-liked-nudges', MostLikedNudgesController::class)->name('most-liked-nudges');
@@ -53,49 +51,10 @@ Route::prefix('nudges')
         Route::get('/{nudge:slug}', ShowController::class)->name('show');
     });
 
-Route::get('/auth/{provider}/redirect', function (string $provider) {
-    return Socialite::driver($provider)->redirect();
-})
-    ->where('provider', 'github|google')
+Route::get('/auth/{provider}/redirect', RedirectController::class)
     ->name('auth-provider-redirect');
 
-Route::get('/auth/{provider}/callback', function (string $provider) {
-    try {
-        $providerUser = Socialite::driver($provider)->user();
-    } catch (Exception $e) {
-        return redirect()->route('login');
-    }
-
-    $user = User::firstWhere([
-        'provider' => $provider,
-        'provider_id' => $providerUser->id,
-    ]);
-
-    if ($user === null) {
-        $validator = Validator::make(
-            ['email' => $providerUser->email],
-            ['email' => ['unique:users,email']],
-            ['unique' => 'Unable to log in. You might have used a different login method.'],
-        );
-
-        if ($validator->fails()) {
-            return redirect()->route('login')->withErrors($validator);
-        }
-
-        $user = User::create([
-            'provider' => $provider,
-            'provider_id' => $providerUser->id,
-            'name' => $providerUser->name,
-            'email' => $providerUser->email,
-            'email_verified_at' => now(),
-        ]);
-    }
-
-    Auth::login($user);
-
-    return redirect()->route('dashboard');
-})
-    ->where('provider', 'github|google')
+Route::get('/auth/{provider}/callback', CallbackController::class)
     ->name('auth-provider-callback');
 
 require __DIR__.'/auth.php';

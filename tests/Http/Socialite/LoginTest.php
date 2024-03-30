@@ -12,12 +12,12 @@ use function Pest\Laravel\get;
 
 it('can handle successful socialite authentication', function (): void {
     $user = mock(User::class, function (MockInterface $mock): void {
-        $mock->id = fake()->randomDigit;
-        $mock->name = fake()->name;
-        $mock->email = fake()->email;
+        $mock
+            ->shouldReceive('getId', 'getName', 'getEmail')
+            ->andReturn(fake()->randomDigit, fake()->name, fake()->email);
     });
 
-    $provider = $this->mock(Provider::class, function (MockInterface $mock) use ($user): void {
+    $provider = mock(Provider::class, function (MockInterface $mock) use ($user): void {
         $mock
             ->shouldReceive('user')
             ->andReturn($user);
