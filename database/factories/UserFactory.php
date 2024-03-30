@@ -50,10 +50,17 @@ class UserFactory extends Factory
         ]);
     }
 
+    public function subscribedMonthAgo(): static
+    {
+        return $this->state(fn () => [
+            'created_at' => now()->subMonthNoOverflow(),
+        ]);
+    }
+
     public function subscribedTwoMonthsAgo(): static
     {
         return $this->state(fn () => [
-            'created_at' => now()->subMonths(2),
+            'created_at' => now()->subMonthsNoOverflow(2),
         ]);
     }
 }

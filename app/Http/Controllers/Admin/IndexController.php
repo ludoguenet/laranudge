@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\Admin\SubscribersVariationPercentage;
 use App\Http\Controllers\Controller;
 use App\Models\Nudge;
 use App\Models\User;
@@ -20,18 +21,15 @@ class IndexController extends Controller
             ->get();
 
         $subscribersCount = User::query()
-            ->whereNotNull('email_verified_at')
+            ->verified()
             ->count();
 
-        $subscribersMonthlyCount = User::query()
-            ->whereNotNull('email_verified_at')
-            ->where('created_at', '>', now()->subMonth())
-            ->count();
+        $subscribersVariationPercentage = (new SubscribersVariationPercentage)->handle();
 
         return view('admin.index', [
             'nudges' => $nudges,
             'subscribersCount' => $subscribersCount,
-            'subscribersMonthlyCount' => $subscribersMonthlyCount,
+            'subscribersVariationPercentage' => $subscribersVariationPercentage,
         ]);
     }
 }

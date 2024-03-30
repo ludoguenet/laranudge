@@ -2,7 +2,10 @@
     <div class="py-20">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="px-4 sm:px-6 lg:px-8">
-                <x-admin-stats :subscribers-count=$subscribersCount :subscribers-monthly-count=$subscribersMonthlyCount />
+                <x-admin-stats
+                    :subscribers-count=$subscribersCount
+                    :subscribers-variation-percentage=$subscribersVariationPercentage
+                />
 
                 @if($nudges->isNotEmpty())
                 <div class="mt-8 flow-root">

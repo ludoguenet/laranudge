@@ -7,6 +7,7 @@ namespace App\Models;
 use App\Contracts\Likeable;
 use App\Notifications\VerifyEmailQueued;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -110,5 +111,13 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendEmailVerificationNotification(): void
     {
         $this->notify(new VerifyEmailQueued);
+    }
+
+    /**
+     * @param  Builder<User>  $query
+     */
+    public function scopeVerified(Builder $query): void
+    {
+        $query->whereNotNull('email_verified_at');
     }
 }
