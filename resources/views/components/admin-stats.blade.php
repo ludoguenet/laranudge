@@ -1,6 +1,6 @@
 @props([
-'subscribersCount',
-'subscribersVariationPercentage',
+    'subscribersCount',
+    'subscribersVariationPercentage',
 ])
 
 <div class="mb-10">
@@ -33,7 +33,7 @@
                 </p>
                 <div class="absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6">
                     <div class="text-sm">
-                        <a href="#" class="font-medium text-cyan-600 hover:text-cyan-500">View all<span class="sr-only"> Total Subscribers stats</span></a>
+                        <a href="{{ route('admin.users.index') }}" class="font-medium text-cyan-600 hover:text-cyan-500">View all<span class="sr-only"> Total Subscribers stats</span></a>
                     </div>
                 </div>
             </dd>
