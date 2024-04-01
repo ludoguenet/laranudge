@@ -40,3 +40,13 @@ it('can display correct subscribers variation percentage', function (int $previo
         [1, 100],
         [2, 0],
     ]);
+
+it('can display correct subscribers variation percentage as integer', function (): void {
+    $user = User::factory()->admin()->create();
+    User::factory(2)->subscribedMonthAgo()->create();
+
+    actingAs($user)
+        ->get(route('admin.index'))
+        ->assertOk()
+        ->assertViewHas('subscribersVariationPercentage', -50);
+});

@@ -24,6 +24,6 @@ class SubscribersVariationPercentage
             return 0;
         }
 
-        return (($subscribersCurrentMonthCount - $subscribersPreviousMonthCount) / $subscribersPreviousMonthCount) * 100;
+        return (int) (($subscribersCurrentMonthCount - $subscribersPreviousMonthCount) / $subscribersPreviousMonthCount * 100);
     }
 }
