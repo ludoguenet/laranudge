@@ -39,7 +39,7 @@ final class CallbackController extends Controller
             );
 
             if ($validator->fails()) {
-                return redirect()->back()->withErrors($validator);
+                return redirect()->route('login')->withErrors($validator);
             }
 
             $user = User::create([
